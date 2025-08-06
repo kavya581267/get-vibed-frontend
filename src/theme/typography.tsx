@@ -92,4 +92,10 @@ export const typography = {
     fontWeight: '300',
     fontFamily: Platform.OS === 'ios' ? 'System' : 'Roboto',
   },
+  // Description text - matches Figma specs
+  description: {
+    fontSize: rf(11),
+    fontWeight: '400',
+    lineHeight: rf(16),
+  },
 } as const;

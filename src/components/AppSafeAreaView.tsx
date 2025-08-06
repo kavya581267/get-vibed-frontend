@@ -1,5 +1,7 @@
 import { Platform, StatusBar, StyleProp, ViewStyle } from "react-native";
 import {  SafeAreaView, useSafeAreaInsets } from "react-native-safe-area-context";
+import { theme } from "../theme/theme";
+import { spacing } from "../theme/spacing";
 
 
 interface AppSafeAreaViewProps {
@@ -13,8 +15,8 @@ interface AppSafeAreaViewProps {
 
 const AppSafeAreaView: React.FC<AppSafeAreaViewProps> = ({
     children,
-    backgroundColor = '#fff',
-    statusBarStyle = 'dark-content',
+    backgroundColor = theme.colors.background,
+    statusBarStyle = 'light-content',
     style = {},
     testID,
 }) => {
@@ -29,8 +31,8 @@ const AppSafeAreaView: React.FC<AppSafeAreaViewProps> = ({
                         backgroundColor,
                         paddingTop: Platform.OS === 'android' ? insets.top : 0,
                         paddingBottom: insets.bottom,
-                        paddingLeft: insets.left,
-                        paddingRight: insets.right,
+                        paddingLeft: spacing.sm,
+                        paddingRight: spacing.sm,
                     },
                     style,
                 ]}

@@ -9,7 +9,6 @@ export const theme = {
     
     // Background colors
     background: '#0A0A0A', // Very dark background
-    cardBackground: '#1A1A1A', // Slightly lighter for cards
     surface: '#2A2A2A', // For elevated surfaces
     
     // Text colors
