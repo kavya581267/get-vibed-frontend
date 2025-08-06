@@ -8,6 +8,7 @@ import EventFeed from './src/components/EventFeed';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
 import CustomBottomTabBar from './src/components/CustomBottomTabBar';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 {/* SafeAreaProvider is a React context provider from the react-native-safe-area-context library.
 It calculates and shares safe area inset values (like top, bottom, left, and right) for the current device.
@@ -85,25 +86,55 @@ export default function App() {
 
         <NavigationContainer>
           <Tab.Navigator
-            screenOptions={{
-              headerShown: false, 
-              tabBarStyle:
-                { 
-                  position: 'absolute',
-                  bottom: 15,
-                  backgroundColor: 'rgba(44, 39, 39, 0.9)',
-                  borderRadius: 40,
-                  height:60 ,
-                  paddingBottom: 20,
-                  elevation: 10,
-                  shadowColor: '#000',
-                  shadowOffset: { width: 0, height: 2 },
-                  shadowOpacity: 0.25,
-                  shadowRadius: 3.84,
-                  borderWidth: 1,
-                  borderColor: 'rgba(44, 39, 39, 0.9)',
-                 }
-            }}
+            screenOptions={({ route }) => ({
+              headerShown: false,
+              tabBarIcon: ({ focused, color='white', size }) => {
+                let iconName: string;
+                
+                switch (route.name) {
+                  case 'Events':
+                    iconName = 'calendar-outline';
+                    break;
+                  case 'Discover':
+                    iconName = 'search-outline';
+                    break;
+                  case 'Notifications':
+                    iconName = 'notifications-outline';
+                    break;
+                  case 'Profile':
+                    iconName = 'person-outline';
+                    break;
+                  default:
+                    iconName = 'ellipse-outline';
+                }
+                
+                return <Icon name={iconName} size={size} color={color} />;
+              },
+              tabBarItemStyle: {
+                justifyContent: 'center',
+                alignItems: 'center',
+              },
+              tabBarActiveTintColor: '#00FF88',
+              tabBarInactiveTintColor: '#888',
+              tabBarStyle: { 
+                position: 'absolute',
+                bottom: 15,
+                backgroundColor: 'rgba(10, 10, 10, 0.9)',
+                borderRadius: 40,
+                height: 60,
+                width: '90%',
+                marginHorizontal: '5%',
+               
+                paddingBottom: 20,
+                elevation: 10,
+                shadowColor: '#000',
+                shadowOffset: { width: 0, height: 2 },
+                shadowOpacity: 0.25,
+                shadowRadius: 3.84,
+                borderWidth: 1,
+                borderColor: 'rgba(10, 10, 10, 0.9)',
+              }
+            })}
           >
             <Tab.Screen name="Events" component={EventsScreen} />
             <Tab.Screen name="Discover" component={DiscoverScreen} />
