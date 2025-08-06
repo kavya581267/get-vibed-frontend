@@ -5,6 +5,9 @@ import { rf, s, vs } from './src/theme/responsive';
 import { typography } from './src/theme/typography';
 import { theme } from './src/theme/theme';
 import EventFeed from './src/components/EventFeed';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { NavigationContainer } from '@react-navigation/native';
+import CustomBottomTabBar from './src/components/CustomBottomTabBar';
 
 {/* SafeAreaProvider is a React context provider from the react-native-safe-area-context library.
 It calculates and shares safe area inset values (like top, bottom, left, and right) for the current device.
@@ -60,19 +63,54 @@ export default function App() {
     // Add more events...
   ];
 
+  const Tab = createBottomTabNavigator();
+
+  function EventsScreen() {
+    return <EventFeed
+      events={sampleEvents}
+      onEventPress={(id) => console.log('Event pressed:', id)}
+      onLike={(id) => console.log('Liked:', id)}
+      onComment={(id) => console.log('Comment:', id)}
+      onShare={(id) => console.log('Share:', id)}
+    />;
+  }
+  function DiscoverScreen() { return <View style={styles.screen}><Text>Discover</Text></View>; }
+  function NotificationsScreen() { return <View style={styles.screen}><Text>Notifications</Text></View>; }
+  function ProfileScreen() { return <View style={styles.screen}><Text>Profile</Text></View>; }
+
   return (
 
     <SafeAreaProvider>
       <AppSafeAreaView >
-        <View style={styles.container}>
-          <EventFeed
-            events={sampleEvents}
-            onEventPress={(id) => console.log('Event pressed:', id)}
-            onLike={(id) => console.log('Liked:', id)}
-            onComment={(id) => console.log('Comment:', id)}
-            onShare={(id) => console.log('Share:', id)}
-          />
-        </View>
+
+        <NavigationContainer>
+          <Tab.Navigator
+            screenOptions={{
+              headerShown: false, 
+              tabBarStyle:
+                { 
+                  position: 'absolute',
+                  bottom: 15,
+                  backgroundColor: 'rgba(44, 39, 39, 0.9)',
+                  borderRadius: 40,
+                  height:60 ,
+                  paddingBottom: 20,
+                  elevation: 10,
+                  shadowColor: '#000',
+                  shadowOffset: { width: 0, height: 2 },
+                  shadowOpacity: 0.25,
+                  shadowRadius: 3.84,
+                  borderWidth: 1,
+                  borderColor: 'rgba(44, 39, 39, 0.9)',
+                 }
+            }}
+          >
+            <Tab.Screen name="Events" component={EventsScreen} />
+            <Tab.Screen name="Discover" component={DiscoverScreen} />
+            <Tab.Screen name="Notifications" component={NotificationsScreen} />
+            <Tab.Screen name="Profile" component={ProfileScreen} />
+          </Tab.Navigator>
+        </NavigationContainer>
 
       </AppSafeAreaView>
     </SafeAreaProvider>
@@ -82,5 +120,11 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  screen: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    color: 'white',
   },
 });
