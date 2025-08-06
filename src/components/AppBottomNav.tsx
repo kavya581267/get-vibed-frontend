@@ -113,12 +113,6 @@ const AppBottomNav = () => {
                         height: ms(60),
                         width: '90%',
                         marginHorizontal: '5%',
-                        paddingBottom: ms(20),
-                        elevation: ms(10),
-                        shadowColor: '#000',
-                        shadowOffset: { width: 0, height: 2 },
-                        shadowOpacity: 0.25,
-                        shadowRadius: 3.84,
                         borderWidth: 1,
                         borderColor: 'rgba(10, 10, 10, 0.9)',
                     }
