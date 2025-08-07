@@ -5,6 +5,7 @@ import EventFeed from "./EventFeed";
 import { StyleSheet, Text, View } from 'react-native';
 import { spacing } from "../theme/spacing";
 import { ms } from "react-native-size-matters";
+import EventsIcon from "./vectors/EventsIcon";
 
 const Tab = createBottomTabNavigator();
 
@@ -82,10 +83,9 @@ const AppBottomNav = () => {
 
                         switch (route.name) {
                             case 'Events':
-                                iconName = 'calendar-outline';
-                                break;
+                                return <EventsIcon color={color} width={size} height={size} />;
                             case 'Discover':
-                                iconName = 'search-outline';
+                                iconName = 'search';
                                 break;
                             case 'Notifications':
                                 iconName = 'notifications-outline';

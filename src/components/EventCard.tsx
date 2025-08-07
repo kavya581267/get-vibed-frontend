@@ -11,6 +11,7 @@ import { theme } from '../theme/theme';
 import { typography } from '../theme/typography';
 import { spacing } from '../theme/spacing';
 import { s, vs, rf } from '../theme/responsive';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 interface EventCardProps {
     title: string;
@@ -57,6 +58,18 @@ const EventCard: React.FC<EventCardProps> = ({
                         <Text style={styles.placeholderSubtext}>Event Image</Text>
                     </View>
                 )}
+            </View>
+
+            <View style={styles.actionButtons}>
+                <TouchableOpacity style={styles.actionButton}>
+                    <Icon name="heart" size={rf(18)} color="white" />
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.actionButton}>
+                    <Icon name="chatbox" size={rf(18)} color="white" />
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.actionButton}>
+                    <Icon name="share-social" size={rf(18)} color="white" />
+                </TouchableOpacity>
             </View>
 
             {/* Event Details */}
@@ -141,35 +154,37 @@ const styles = StyleSheet.create({
     imageContainer: {
         position: 'relative',
         width: '100%', // Use full available width
-        height: vs(228),
         borderRadius: s(16),
         gap: s(10),
         opacity: 1,
         alignSelf: 'stretch',
         overflow: 'hidden',
+        backgroundColor: 'blue',
     },
 
     eventImage: {
-         width: '100%', // 370 - 32 (16px padding on each side)
+        width: '100%', // 370 - 32 (16px padding on each side)
         height: vs(196), // 228 - 32 (16px padding on top and bottom)
         borderRadius: s(8), // Slightly smaller than container border radius
     },
 
     actionButtons: {
-        position: 'absolute',
-        bottom: vs(32), // Adjusted for image container padding
-        left: s(32), // Adjusted for image container padding
         flexDirection: 'row',
-        gap: s(12),
+        gap: s(8),
+        width: rf(160),
+        height: s(36),
+        alignItems: 'center',
+        marginTop: spacing.sm,
+        marginBottom: spacing.md,
     },
 
     actionButton: {
-        backgroundColor: theme.colors.overlay,
-        borderRadius: s(20),
-        width: s(40),
-        height: s(40),
-        justifyContent: 'center',
+        backgroundColor: theme.colors.shadow,
+        borderRadius: s(18),
+        width: s(48),
+        height: s(30),
         alignItems: 'center',
+        justifyContent: 'center'
     },
 
     actionIcon: {
@@ -196,7 +211,7 @@ const styles = StyleSheet.create({
     featuresContainer: {
         marginBottom: spacing.sm,
     },
-    contentContainer:{
+    contentContainer: {
         marginBottom: spacing.lg
     },
 
