@@ -5,12 +5,15 @@ interface EventsIconProps {
   color?: string;
   width?: number;
   height?: number;
+  focused?: boolean;
 }
 
-const EventsIcon = ({ color = "#14AE5C", width = 25, height = 24, ...props }: EventsIconProps) => (
+const EventsIcon = ({ color = "#14AE5C", width = 25, height = 24,focused = false, ...props  }: EventsIconProps) => (
+  
   <Svg
-    width={width}
-    height={height}
+    width={focused ? width * 1.2 : width}
+    height={focused ? height * 1.2 : height}
+    viewBox={`0 0 ${width} ${height}`}
     fill="none"
     {...props}
   >

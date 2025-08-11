@@ -1,4 +1,4 @@
-import { Platform, StatusBar, StyleProp, ViewStyle } from "react-native";
+import { Platform, StatusBar, StyleProp, View, ViewStyle } from "react-native";
 import {  SafeAreaView, useSafeAreaInsets } from "react-native-safe-area-context";
 import { theme } from "../theme/theme";
 import { spacing } from "../theme/spacing";
@@ -23,7 +23,7 @@ const AppSafeAreaView: React.FC<AppSafeAreaViewProps> = ({
     const insets = useSafeAreaInsets();
 
     return (
-            <SafeAreaView
+            <View
                 testID={testID}
                 style={[
                     {
@@ -42,7 +42,7 @@ const AppSafeAreaView: React.FC<AppSafeAreaViewProps> = ({
                     barStyle={statusBarStyle}
                 />
                 {children}
-            </SafeAreaView>
+            </View>
     );
 };
 
