@@ -1,4 +1,4 @@
-import { Platform } from 'react-native';
+import { API_BASE_URL, APP_ENV, DEBUG_MODE, LOG_LEVEL } from '@env';
 
 interface EnvConfig {
   API_BASE_URL: string;
@@ -8,32 +8,11 @@ interface EnvConfig {
 }
 
 const getEnvVars = (): EnvConfig => {
-  let Config: any;
-  let Constants: any;
-  
-  try {
-    // Try react-native-config first (for ejected/bare RN)
-    Config = require('react-native-config').default;
-  } catch {
-    // Fallback to expo-constants (for Expo managed)
-    try {
-      Constants = require('expo-constants').default;
-    } catch {
-      // Neither available, use defaults
-    }
-  }
-
-  // Get values from react-native-config or expo-constants
-  const API_BASE_URL = Config?.API_BASE_URL || 'https://dev-api.example.com';
-  const APP_ENV = Config?.APP_ENV || Constants?.expoConfig?.releaseChannel || 'development';
-  const DEBUG_MODE = Config?.DEBUG_MODE === 'true' || __DEV__;
-  const LOG_LEVEL = Config?.LOG_LEVEL || 'debug';
-
   return {
-    API_BASE_URL,
-    APP_ENV: APP_ENV as 'development' | 'staging' | 'production',
-    DEBUG_MODE,
-    LOG_LEVEL: LOG_LEVEL as 'debug' | 'info' | 'warn' | 'error',
+    API_BASE_URL: API_BASE_URL || 'https://dev-api.example.com',
+    APP_ENV: (APP_ENV as 'development' | 'staging' | 'production') || 'development',
+    DEBUG_MODE: DEBUG_MODE === 'true' || __DEV__,
+    LOG_LEVEL: (LOG_LEVEL as 'debug' | 'info' | 'warn' | 'error') || 'debug',
   };
 };
 

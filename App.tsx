@@ -1,28 +1,39 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import AppSafeAreaView from './src/components/AppSafeAreaView';
-import { rf, s, vs } from './src/theme/responsive';
-import { typography } from './src/theme/typography';
-import { theme } from './src/theme/theme';
-import { ENV, isDev } from './src/config/env';
+import SignUpScreen from './src/screens/signUp';
+import { GradientBackground } from './src/components/GradientBackground';
+import useAppFonts from './src/components/hooks/useAppFonts';
+import { useEffect } from 'react';
+import * as SplashScreen from 'expo-splash-screen';
 {/* SafeAreaProvider is a React context provider from the react-native-safe-area-context library.
 It calculates and shares safe area inset values (like top, bottom, left, and right) for the current device.
 It must be at the top level of your app so that components below it (like AppSafeAreaView) can access the inset values.
  AppSafeAreaView uses the useSafeAreaInsets() hook, and that hook only works when it’s inside a SafeAreaProvider */}
+SplashScreen.preventAutoHideAsync();
+
 export default function App() {
+  const fontsLoaded = useAppFonts();
+
+  useEffect(() => {
+    if (fontsLoaded) {
+      SplashScreen.hideAsync();
+    }
+  }, [fontsLoaded]);
+
+  if (!fontsLoaded) {
+    return null;
+  }
   return (
 
     <SafeAreaProvider>
-      <AppSafeAreaView >
-        <View style={styles.container}>
-           <Text>Heading Open up App.tsx to start working  your app!</Text>
-         <Text style={[typography.heading1, { marginBottom: theme.spacing.md }]}>Heading Open up App.tsx to start working  your app!</Text>
-         <Text style={[typography.heading2, { marginBottom: theme.spacing.md }]}>Sub Heading</Text>
-          <Text style={[typography.bodyText, { marginBottom: theme.spacing.xs }]}>Open up App.tsx to start working  your app!</Text>
-          <Text style={[typography.caption, { marginBottom: theme.spacing.lg }]}>Caption</Text>
-          {isDev && <Text style={[typography.small, { color: 'red' }]}>ENV: {ENV.APP_ENV} | API: {ENV.API_BASE_URL}</Text>}
-        </View>
-      </AppSafeAreaView>
+      <View style={styles.container}>
+        <GradientBackground>
+          <AppSafeAreaView >
+            <SignUpScreen />
+          </AppSafeAreaView>
+        </GradientBackground>
+      </View>
     </SafeAreaProvider>
   );
 }
@@ -30,6 +41,6 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'pink',
+
   },
 });

@@ -32,11 +32,17 @@ import { rf } from "./responsive";
  * - small: Fine print, disclaimers, timestamps
  */
 export const typography = {
+ 
+  or: {
+    fontSize: rf(12),
+    fontWeight: "600",
+    fontFamily: "inter",
+  },
   // Large page titles, hero text
   heading1: {
-    fontSize: Platform.OS === 'ios' ? rf(28) : rf(24),
-    fontWeight: Platform.OS === 'ios' ? '700' : 'bold',
-    fontFamily: Platform.OS === 'ios' ? 'System' : 'Roboto',
+    fontSize: rf(32),
+    fontWeight: "400",
+    fontFamily: "LondrinaSolid_400Regular",
   },
   // Section headers, card titles
   heading2: {
@@ -70,10 +76,17 @@ export const typography = {
   },
   // Button labels, CTAs
   button: {
-    fontSize: Platform.OS === 'ios' ? rf(17) : rf(16),
-    fontWeight: '500',
-    fontFamily: Platform.OS === 'ios' ? 'System' : 'Roboto',
+    fontSize: rf(14),
+    fontWeight: '600',
+    fontFamily: "inter",
   },
+
+  googleButton : {
+    fontSize: rf(14),
+    fontWeight: '500',
+    fontFamily: "inter",
+  },
+
   // Form labels, input labels
   label: {
     fontSize: Platform.OS === 'ios' ? rf(15) : rf(14),

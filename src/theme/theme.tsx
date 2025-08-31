@@ -1,12 +1,10 @@
-import { spacing } from './spacing';
-import { typography } from './typography';
+
 
 export const theme = {
   colors: {
-    primary: '',
-    background: '#000',
-    text: ''
+    primary: '#14AE5C',
+    secondary: '#FFFFFF',
+    border : "#3F3F48",
+    input: "#D9D9D9"
   },
-  spacing,
-  typography,
 };
