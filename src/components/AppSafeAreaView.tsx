@@ -13,8 +13,8 @@ interface AppSafeAreaViewProps {
 
 const AppSafeAreaView: React.FC<AppSafeAreaViewProps> = ({
     children,
-    backgroundColor = '#fff',
-    statusBarStyle = 'dark-content',
+    //backgroundColor = '#021d15',
+    statusBarStyle = 'light-content',
     style = {},
     testID,
 }) => {
@@ -26,7 +26,7 @@ const AppSafeAreaView: React.FC<AppSafeAreaViewProps> = ({
                 style={[
                     {
                         flex: 1,
-                        backgroundColor,
+                       // backgroundColor,
                         paddingTop: Platform.OS === 'android' ? insets.top : 0,
                         paddingBottom: insets.bottom,
                         paddingLeft: insets.left,
