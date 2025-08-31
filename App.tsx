@@ -1,11 +1,11 @@
 import { StyleSheet, View } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import AppSafeAreaView from './src/components/AppSafeAreaView';
-import SignUpScreen from './src/screens/signUp';
 import { GradientBackground } from './src/components/GradientBackground';
 import useAppFonts from './src/components/hooks/useAppFonts';
 import { useEffect } from 'react';
 import * as SplashScreen from 'expo-splash-screen';
+import SignUpScreen from './src/screens/SignUp';
 {/* SafeAreaProvider is a React context provider from the react-native-safe-area-context library.
 It calculates and shares safe area inset values (like top, bottom, left, and right) for the current device.
 It must be at the top level of your app so that components below it (like AppSafeAreaView) can access the inset values.
