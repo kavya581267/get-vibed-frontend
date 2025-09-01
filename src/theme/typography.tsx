@@ -1,5 +1,5 @@
 import { Platform } from "react-native";
-import { rf } from "./responsive";
+import { rf, rsFontModerate } from "./responsive";
 
 /**
  * Typography System - Platform-specific font styles
@@ -32,7 +32,7 @@ import { rf } from "./responsive";
  * - small: Fine print, disclaimers, timestamps
  */
 export const typography = {
- 
+
   or: {
     fontSize: rf(12),
     fontWeight: "600",
@@ -46,9 +46,9 @@ export const typography = {
   },
   // Section headers, card titles
   heading2: {
-    fontSize: Platform.OS === 'ios' ? rf(22) : rf(20),
-    fontWeight: '600',
-    fontFamily: Platform.OS === 'ios' ? 'System' : 'Roboto',
+    fontSize: rsFontModerate(28),
+    fontWeight: '400',
+    fontFamily: "LondrinaSolid_400Regular",
   },
   // Subsection headers
   heading3: {
@@ -61,6 +61,11 @@ export const typography = {
     fontSize: Platform.OS === 'ios' ? rf(18) : rf(16),
     fontWeight: '500',
     fontFamily: Platform.OS === 'ios' ? 'System' : 'Roboto',
+  },
+  subTitle: {
+    fontSize: rsFontModerate(14),
+    fontWeight: '400',
+    fontFamily: "Inter",
   },
   // Main content, paragraphs
   bodyText: {
@@ -81,7 +86,7 @@ export const typography = {
     fontFamily: "inter",
   },
 
-  googleButton : {
+  googleButton: {
     fontSize: rf(14),
     fontWeight: '500',
     fontFamily: "inter",
