@@ -18,8 +18,8 @@ export const EmailVerification = () => {
             <View>
                 <ProgressBar currentStep={3} totalSteps={5} />
                 <View style={{ marginTop: rsHeight(95) - insets.top }}>
-                    <Text style={styles.title}>What's your mobile <Text style={styles.secondryColor}>Number?</Text></Text>
-                    <Text style={styles.subTitle}>We'll send you OTP for verification</Text>
+                    <Text style={styles.title}>What's your <Text style={styles.secondryColor}>Email?</Text></Text>
+                    <Text style={styles.subTitle}>We'll send you OTP for Email verification</Text>
                     <View style={{ marginTop: rsHeight(70) - insets.top }}>
                         <CustomTextInput style={{ marginTop: Spacing.md }} value={email} onChangeText={setEmail} keyboardType="email-address" placeholder="anything@gmail.com" />
                     </View>

@@ -6,6 +6,7 @@ import { theme } from "../theme/theme";
 import { useState } from "react";
 import CustomButton from "../components/CustomButton";
 import { AppKeyboardAvoidView } from "../components/AppKeyboardAvoidView";
+import { ProgressBar } from "../components/ProgressBar";
 
 export const Otp = () => {
     const insets = useSafeAreaInsets();
@@ -21,24 +22,27 @@ export const Otp = () => {
     return (
 
         <AppKeyboardAvoidView style={styles.container}>
-            <View style={{ marginTop: rsHeight(95) - insets.top }}>
-                <Text style={styles.title}>What's your mobile <Text style={styles.secondryColor}>Number?</Text></Text>
-                <Text style={styles.subTitle}>We'll send you OTP for verification</Text>
+            <View>
+                <ProgressBar currentStep={2} totalSteps={5} />
 
-                <View style={styles.otpContainer}>
-                    {otp.map((digit, index) => (
-                        <TextInput
-                            key={index}
-                            style={styles.otpInput}
-                            maxLength={1}
-                            keyboardType="number-pad"
-                            value={digit}
-                            onChangeText={(text) => handleChange(text, index)}
-                        />
-                    ))}
+                <View style={{ marginTop: rsHeight(95) - insets.top }}>
+                    <Text style={styles.title}>What's your mobile <Text style={styles.secondryColor}>Number?</Text></Text>
+                    <Text style={styles.subTitle}>We'll send you OTP for verification</Text>
+
+                    <View style={styles.otpContainer}>
+                        {otp.map((digit, index) => (
+                            <TextInput
+                                key={index}
+                                style={styles.otpInput}
+                                maxLength={1}
+                                keyboardType="number-pad"
+                                value={digit}
+                                onChangeText={(text) => handleChange(text, index)}
+                            />
+                        ))}
+                    </View>
                 </View>
             </View>
-
             <CustomButton title="Continue" onPress={() => console.log("OTP", otp)} disabled={!isComplete} />
         </AppKeyboardAvoidView>
 
