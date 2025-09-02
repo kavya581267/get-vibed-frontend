@@ -1,16 +1,13 @@
-import { StyleSheet, Text, View } from "react-native"
-import { AppKeyboardAvoidView } from "../components/AppKeyboardAvoidView"
-import { ProgressBar } from "../components/ProgressBar"
-import { rsHeight, Spacing } from "../theme/responsive"
+import { Text, View } from "react-native"
+import { AppKeyboardAvoidView } from "../../components/AppKeyboardAvoidView"
+import { ProgressBar } from "../../components/ProgressBar"
+import { rsHeight } from "../../theme/responsive"
 import { useSafeAreaInsets } from "react-native-safe-area-context"
-import { typography } from "../theme/typography"
-import { theme } from "../theme/theme"
 import { useState } from "react"
-import CustomButton from "../components/CustomButton"
-import InterestButton from "../components/InterestButton"
-import { GradientBackground } from "../components/GradientBackground"
-import AppSafeAreaView from "../components/AppSafeAreaView"
+import CustomButton from "../../components/CustomButton"
+import InterestButton from "../../components/InterestButton"
 import { useNavigation } from "@react-navigation/native"
+import { styles } from "../../styles/newUserStyles/InterestScreen.styles"
 
 const interests = [
     "Pubs",
@@ -28,10 +25,9 @@ const interests = [
     "Clubbing",
     "Party",
 ];
-export const Interests = () => {
+export const InterestsScreen = () => {
     const insets = useSafeAreaInsets();
     const navigation = useNavigation();
-    const [email, setEmail] = useState("");
     const [selected, setSelected] = useState<string[]>([]);
 
     const toggleSelection = (item: string) => {
@@ -62,39 +58,9 @@ export const Interests = () => {
                 </View>
             </View>
 
-            <CustomButton title="Continue" onPress={() => navigation.navigate("Success")} />
-
-
+            <CustomButton title="Continue" onPress={() => navigation.navigate("SuccessScreen")} />
         </AppKeyboardAvoidView>
 
     )
 }
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        padding: Spacing.lg,
-        justifyContent: "space-between",
-        paddingBottom: 0
-    },
-    title: {
-        fontFamily: typography.heading2.fontFamily,
-        color: theme.colors.primary,
-        fontSize: typography.heading2.fontSize,
-        fontWeight: typography.heading2.fontWeight
-    },
-    secondryColor: {
-        color: theme.colors.secondary
-    },
-    subTitle: {
-        color: theme.colors.input,
-        fontSize: typography.subTitle.fontSize,
-        fontFamily: typography.subTitle.fontFamily,
-        fontWeight: typography.subTitle.fontWeight,
-        marginTop: Spacing.xs
-    },
-    grid: {
-        flexDirection: "row",
-        flexWrap: "wrap",
-    },
-})

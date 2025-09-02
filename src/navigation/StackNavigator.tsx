@@ -1,24 +1,33 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack"
-import SignUpScreen from "../screens/SignUp";
-import { MobileVerificationScreen } from "../screens/MobileVerification";
-import { Otp } from "../screens/Otp";
-import { EmailVerification } from "../screens/EmailVerification";
-import { Interests } from "../screens/Interests";
-import { Success } from "../screens/Success";
 import { withGradient } from "../components/hoc/withGradient";
+import { OtpScreen } from "../screens/newUser/Otp";
+import { EmailVerificationScreen } from "../screens/newUser/EmailVerification";
+import { InterestsScreen } from "../screens/newUser/Interests";
+import { SuccessScreen } from "../screens/newUser/Success";
+import SignUpScreen from "../screens/newUser/SignUp";
+import { MobileVerificationScreen } from "../screens/newUser/MobileVerification";
 
+
+export type RootStackParamList = {
+    SignUpScreen: undefined;
+    MobileVerificationScreen: undefined;
+    OtpScreen: undefined;
+    EmailVerificationScreen: undefined;
+    InterestsScreen: undefined;
+    SuccessScreen: undefined;
+}
 
 const Stack = createNativeStackNavigator();
 
-export default function StackNavigator() {
-    return(
- <Stack.Navigator screenOptions={{ headerShown: false,contentStyle: { backgroundColor: "transparent" } }} >
-    <Stack.Screen name="SignUpScreen" component={withGradient(SignUpScreen)} />
-    <Stack.Screen name="MobileVerificationScreen" component={withGradient(MobileVerificationScreen)} />
-    <Stack.Screen name="Otp" component={withGradient(Otp)}/>
-    <Stack.Screen name="EmailVerification" component={withGradient(EmailVerification)}/>
-    <Stack.Screen name="Interests" component={withGradient(Interests)}/>
-    <Stack.Screen name="Success" component={withGradient(Success)}/>
- </Stack.Navigator>
-    )
+export default function StackNavigator<RootStackParamList>() {
+   return (
+      <Stack.Navigator screenOptions={{ headerShown: false, contentStyle: { backgroundColor: "transparent" } }} >
+         <Stack.Screen name="SignUpScreen" component={withGradient(SignUpScreen)} />
+         <Stack.Screen name="MobileVerificationScreen" component={withGradient(MobileVerificationScreen)} />
+         <Stack.Screen name="OtpScreen" component={withGradient(OtpScreen)} />
+         <Stack.Screen name="EmailVerificationScreen" component={withGradient(EmailVerificationScreen)} />
+         <Stack.Screen name="InterestsScreen" component={withGradient(InterestsScreen)} />
+         <Stack.Screen name="SuccessScreen" component={withGradient(SuccessScreen)} />
+      </Stack.Navigator>
+   )
 }
