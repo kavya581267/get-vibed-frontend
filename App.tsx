@@ -5,13 +5,8 @@ import { GradientBackground } from './src/components/GradientBackground';
 import useAppFonts from './src/components/hooks/useAppFonts';
 import { useEffect, useState } from 'react';
 import * as SplashScreen from 'expo-splash-screen';
-import SignUpScreen from './src/screens/SignUp';
 import { Splash } from './src/screens/SplashScreen';
-import { MobileVerificationScreen } from './src/screens/MobileVerification';
-import { Otp } from './src/screens/Otp';
-import { EmailVerification } from './src/screens/EmailVerification';
-import { Interests } from './src/screens/Interests';
-import { Success } from './src/screens/Success';
+import RootNavigator from './src/navigation/RootNavigator';
 {/* SafeAreaProvider is a React context provider from the react-native-safe-area-context library.
 It calculates and shares safe area inset values (like top, bottom, left, and right) for the current device.
 It must be at the top level of your app so that components below it (like AppSafeAreaView) can access the inset values.
@@ -37,7 +32,7 @@ export default function App() {
       <View style={styles.container}>
         <GradientBackground>
           <AppSafeAreaView >
-            {showSplash ? <Splash /> : <Success />}
+            {showSplash ? <Splash /> : <RootNavigator />}
           </AppSafeAreaView>
         </GradientBackground>
       </View>

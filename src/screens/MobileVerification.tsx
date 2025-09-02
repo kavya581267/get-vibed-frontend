@@ -8,10 +8,12 @@ import { CountryPicker } from "react-native-country-codes-picker";
 import CustomButton from "../components/CustomButton"
 import { AppKeyboardAvoidView } from "../components/AppKeyboardAvoidView"
 import { ProgressBar } from "../components/ProgressBar"
+import { useNavigation } from "@react-navigation/native"
 
 
 export const MobileVerificationScreen = () => {
     const insets = useSafeAreaInsets();
+    const navigation = useNavigation();
 
     const [phone, setPhone] = useState("");
     const [showCountryPicker, setShowCountryPicker] = useState(false);
@@ -65,7 +67,7 @@ export const MobileVerificationScreen = () => {
                     itemsList: { maxHeight: 350 },
                 }} />
             <View >
-                <CustomButton title="Continue" onPress={() => Alert.alert("Phone Number", phone)} disabled={phone.length < 10 || phone.length > 10} />
+                <CustomButton title="Continue" onPress={() =>navigation.navigate("Otp")} disabled={phone.length < 10 || phone.length > 10} />
             </View>
 
         </AppKeyboardAvoidView>

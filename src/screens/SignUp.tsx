@@ -8,9 +8,11 @@ import { letterSpacing, margin, padding } from "../theme/spacing";
 import CustomButton from "../components/CustomButton";
 import { FontSize, Radius, rsBorder, rsFont, rsHeight, rsWidth, Spacing } from "../theme/responsive";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { useNavigation } from "@react-navigation/native";
 
 
 export default function SignUpScreen() {
+    const navigation = useNavigation();
     const insets = useSafeAreaInsets();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -49,7 +51,7 @@ export default function SignUpScreen() {
                         title="Party Now!"
                         style={styles.button}
                         textStyle={{ fontSize: typography.button.fontSize, fontWeight: typography.button.fontWeight }}
-                        onPress={() => Alert.alert("created account")}
+                        onPress={() => navigation.navigate("MobileVerificationScreen")}
                     />
                 </View>
 

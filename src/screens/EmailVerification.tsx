@@ -8,10 +8,12 @@ import { theme } from "../theme/theme"
 import CustomTextInput from "../components/CustomTextInput"
 import { useState } from "react"
 import CustomButton from "../components/CustomButton"
+import { useNavigation } from "@react-navigation/native"
 
 
 export const EmailVerification = () => {
     const insets = useSafeAreaInsets();
+    const navigation = useNavigation();
     const [email, setEmail] = useState("");
     return (
         <AppKeyboardAvoidView style={styles.container}>
@@ -26,7 +28,7 @@ export const EmailVerification = () => {
                 </View>
             </View>
 
-            <CustomButton title="Continue" onPress={() => console.log(email)} disabled={email.length<=10}/>
+            <CustomButton title="Continue" onPress={() => navigation.navigate("Interests")} disabled={email.length<=10}/>
 
 
         </AppKeyboardAvoidView>

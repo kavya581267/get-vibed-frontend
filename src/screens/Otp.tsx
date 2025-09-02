@@ -7,9 +7,11 @@ import { useState } from "react";
 import CustomButton from "../components/CustomButton";
 import { AppKeyboardAvoidView } from "../components/AppKeyboardAvoidView";
 import { ProgressBar } from "../components/ProgressBar";
+import { useNavigation } from "@react-navigation/native";
 
 export const Otp = () => {
     const insets = useSafeAreaInsets();
+    const navigation = useNavigation();
     const [otp, setOtp] = useState(["", "", "", ""]);
 
     const handleChange = (text: string, index: number) => {
@@ -43,7 +45,7 @@ export const Otp = () => {
                     </View>
                 </View>
             </View>
-            <CustomButton title="Continue" onPress={() => console.log("OTP", otp)} disabled={!isComplete} />
+            <CustomButton title="Continue" onPress={() => navigation.navigate("EmailVerification")} disabled={!isComplete} />
         </AppKeyboardAvoidView>
 
     )
