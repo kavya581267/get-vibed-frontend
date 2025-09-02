@@ -9,6 +9,8 @@ import CustomTextInput from "../components/CustomTextInput"
 import { useState } from "react"
 import CustomButton from "../components/CustomButton"
 import { useNavigation } from "@react-navigation/native"
+import { GradientBackground } from "../components/GradientBackground"
+import AppSafeAreaView from "../components/AppSafeAreaView"
 
 
 export const EmailVerification = () => {
@@ -16,6 +18,7 @@ export const EmailVerification = () => {
     const navigation = useNavigation();
     const [email, setEmail] = useState("");
     return (
+
         <AppKeyboardAvoidView style={styles.container}>
             <View>
                 <ProgressBar currentStep={3} totalSteps={5} />
@@ -28,10 +31,11 @@ export const EmailVerification = () => {
                 </View>
             </View>
 
-            <CustomButton title="Continue" onPress={() => navigation.navigate("Interests")} disabled={email.length<=10}/>
+            <CustomButton title="Continue" onPress={() => navigation.navigate("Interests")} disabled={email.length <= 10} />
 
 
         </AppKeyboardAvoidView>
+
     )
 }
 

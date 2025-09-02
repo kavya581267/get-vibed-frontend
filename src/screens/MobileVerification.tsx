@@ -9,6 +9,8 @@ import CustomButton from "../components/CustomButton"
 import { AppKeyboardAvoidView } from "../components/AppKeyboardAvoidView"
 import { ProgressBar } from "../components/ProgressBar"
 import { useNavigation } from "@react-navigation/native"
+import { GradientBackground } from "../components/GradientBackground"
+import AppSafeAreaView from "../components/AppSafeAreaView"
 
 
 export const MobileVerificationScreen = () => {
@@ -20,6 +22,7 @@ export const MobileVerificationScreen = () => {
     const [countryCode, setCountryCode] = useState("+91");
     const [countryFlag, setCountryFlag] = useState("🇮🇳")
     return (
+
         <AppKeyboardAvoidView style={styles.container}>
             <View>
                 <ProgressBar currentStep={1} totalSteps={5} />
@@ -67,10 +70,11 @@ export const MobileVerificationScreen = () => {
                     itemsList: { maxHeight: 350 },
                 }} />
             <View >
-                <CustomButton title="Continue" onPress={() =>navigation.navigate("Otp")} disabled={phone.length < 10 || phone.length > 10} />
+                <CustomButton title="Continue" onPress={() => navigation.navigate("Otp")} disabled={phone.length < 10 || phone.length > 10} />
             </View>
 
         </AppKeyboardAvoidView>
+
     )
 }
 
@@ -79,7 +83,7 @@ const styles = StyleSheet.create({
         flex: 1,
         padding: Spacing.lg,
         justifyContent: "space-between",
-        paddingBottom: 0
+        paddingBottom: 0,
     },
     title: {
         fontFamily: typography.heading2.fontFamily,

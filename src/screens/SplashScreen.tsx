@@ -3,9 +3,10 @@ import { theme } from "../theme/theme"
 import { FontSize, rsHeight, rsWidth } from "../theme/responsive"
 import { typography } from "../theme/typography"
 import { useSafeAreaInsets } from "react-native-safe-area-context"
+import { withGradient } from "../components/hoc/withGradient"
 
 
-export const Splash = () => {
+const Splash = () => {
     const insets = useSafeAreaInsets();
     return (
         <View style={styles.container}>
@@ -16,6 +17,8 @@ export const Splash = () => {
         </View>
     )
 }
+
+export const GetVibedSplashScreen =  withGradient(Splash);
 
 const styles = StyleSheet.create({
 

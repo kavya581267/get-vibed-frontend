@@ -8,6 +8,9 @@ import { theme } from "../theme/theme"
 import { useState } from "react"
 import CustomButton from "../components/CustomButton"
 import InterestButton from "../components/InterestButton"
+import { GradientBackground } from "../components/GradientBackground"
+import AppSafeAreaView from "../components/AppSafeAreaView"
+import { useNavigation } from "@react-navigation/native"
 
 const interests = [
     "Pubs",
@@ -27,6 +30,7 @@ const interests = [
 ];
 export const Interests = () => {
     const insets = useSafeAreaInsets();
+    const navigation = useNavigation();
     const [email, setEmail] = useState("");
     const [selected, setSelected] = useState<string[]>([]);
 
@@ -38,6 +42,7 @@ export const Interests = () => {
         }
     };
     return (
+
         <AppKeyboardAvoidView style={styles.container}>
             <View>
                 <ProgressBar currentStep={4} totalSteps={5} />
@@ -57,10 +62,11 @@ export const Interests = () => {
                 </View>
             </View>
 
-            <CustomButton title="Continue" onPress={() => console.log(email)} />
+            <CustomButton title="Continue" onPress={() => navigation.navigate("Success")} />
 
 
         </AppKeyboardAvoidView>
+
     )
 }
 

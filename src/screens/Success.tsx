@@ -10,6 +10,7 @@ import { theme } from "../theme/theme";
 export const Success = () => {
     const insets = useSafeAreaInsets();
     return (
+
         <View style={styles.container}>
             <View>
                 <ProgressBar currentStep={5} totalSteps={5} />
@@ -23,6 +24,7 @@ export const Success = () => {
             </View>
             <CustomButton title="Live Young! Party Hard!" onPress={() => console.log("done")} />
         </View>
+
     )
 }
 

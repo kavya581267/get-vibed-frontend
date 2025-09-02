@@ -8,6 +8,8 @@ import CustomButton from "../components/CustomButton";
 import { AppKeyboardAvoidView } from "../components/AppKeyboardAvoidView";
 import { ProgressBar } from "../components/ProgressBar";
 import { useNavigation } from "@react-navigation/native";
+import { GradientBackground } from "../components/GradientBackground";
+import AppSafeAreaView from "../components/AppSafeAreaView";
 
 export const Otp = () => {
     const insets = useSafeAreaInsets();

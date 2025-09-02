@@ -16,10 +16,3 @@ export const GradientBackground: React.FC<GradientBackgroundProps> = ({ children
     {children}
   </LinearGradient>
 );
-
-export const withGradient = <P extends object>(Component: React.ComponentType<P>) => 
-  (props: P) => (
-    <GradientBackground>
-      <Component {...props} />
-    </GradientBackground>
-  );
