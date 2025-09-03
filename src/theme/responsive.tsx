@@ -54,6 +54,7 @@ export const Radius = {
   sm: rsModerate(4),
   md: rsModerate(8),
   lg: rsModerate(16),
+  xl: rsModerate(24),
   pill: rsModerate(250),
 };
 

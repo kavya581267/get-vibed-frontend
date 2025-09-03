@@ -6,6 +6,8 @@ import { InterestsScreen } from "../screens/newUser/Interests";
 import { SuccessScreen } from "../screens/newUser/Success";
 import SignUpScreen from "../screens/newUser/SignUp";
 import { MobileVerificationScreen } from "../screens/newUser/MobileVerification";
+import TopTabs from "./TopTabs";
+import MainTab from "../screens/artist/EventScreen";
 
 
 export type RootStackParamList = {
@@ -15,6 +17,7 @@ export type RootStackParamList = {
     EmailVerificationScreen: undefined;
     InterestsScreen: undefined;
     SuccessScreen: undefined;
+    TopTabs:undefined;
 }
 
 const Stack = createNativeStackNavigator();
@@ -28,6 +31,7 @@ export default function StackNavigator<RootStackParamList>() {
          <Stack.Screen name="EmailVerificationScreen" component={withGradient(EmailVerificationScreen)} />
          <Stack.Screen name="InterestsScreen" component={withGradient(InterestsScreen)} />
          <Stack.Screen name="SuccessScreen" component={withGradient(SuccessScreen)} />
+          <Stack.Screen name="MainTab" component={withGradient(MainTab)} />
       </Stack.Navigator>
    )
 }

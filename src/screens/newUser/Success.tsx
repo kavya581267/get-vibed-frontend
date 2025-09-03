@@ -4,10 +4,12 @@ import CustomButton from "../../components/CustomButton";
 import { ProgressBar } from "../../components/ProgressBar";
 import { rsHeight, rsWidth } from "../../theme/responsive";
 import { styles } from "../../styles/newUserStyles/SuccessScreen.styles";
+import { useNavigation } from "@react-navigation/native";
 
 
 export const SuccessScreen = () => {
     const insets = useSafeAreaInsets();
+    const navigation = useNavigation();
     return (
 
         <View style={styles.container}>
@@ -21,7 +23,7 @@ export const SuccessScreen = () => {
                     </View>
                 </View>
             </View>
-            <CustomButton title="Live Young! Party Hard!" onPress={() => console.log("done")} />
+            <CustomButton title="Live Young! Party Hard!" onPress={() => navigation.navigate("MainTab")} />
         </View>
 
     )

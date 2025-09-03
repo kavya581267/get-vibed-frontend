@@ -28,7 +28,7 @@ const AppSafeAreaView: React.FC<AppSafeAreaViewProps> = ({
                         flex: 1,
                        // backgroundColor,
                         paddingTop: Platform.OS === 'android' ? insets.top : 0,
-                        paddingBottom: insets.bottom,
+                        paddingBottom: 0,
                         paddingLeft: insets.left,
                         paddingRight: insets.right,
                     },

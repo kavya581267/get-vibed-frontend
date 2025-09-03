@@ -33,10 +33,10 @@ export const EventCard: React.FC<EventCardProps> = ({
     onLocate,
 }) => {
     return (
-        <View style={{ paddingBottom: Spacing.xl }}>
+        <View style={{ paddingBottom: Spacing.xl, backgroundColor: "#0C130E" }}>
             {/* Head */}
             <View style={{ paddingBottom: 10 }}>
-                <View style={{ flexDirection: 'row' }}>
+                <View style={{ flexDirection: 'row',paddingLeft:Spacing.md,paddingRight:Spacing.md }}>
                     <View>
                         <Image style={{ width: rsWidth(36), height: rsHeight(36) }}  source={require('../../../assets/Ellipse.png')} resizeMode="contain" />
                     </View>
@@ -55,9 +55,9 @@ export const EventCard: React.FC<EventCardProps> = ({
                     <Text style={styles.ratingText}>{rating}</Text>
                 </View>
 
-                <View style={{ flexDirection: 'row', justifyContent: "space-between", paddingTop: 16 }}>
-                    <CustomButton style={{ width: rsWidth(179), height: rsHeight(32)}} textStyle={{fontSize:FontSize.tiny,fontWeight:"500"}} title="Apply to Perform" onPress={() =>  console.log(`Apply clicked for ${venueName}`)} />
-                    <CustomButton style={{ width: rsWidth(179), height: rsHeight(32) }} textStyle={{fontSize:FontSize.tiny,fontWeight:"500"}} title="Locate" onPress={() => console.log("Locate")} />
+                <View style={{ flexDirection: 'row', justifyContent: "space-between", padding:Spacing.md,paddingBottom:0 }}>
+                    <CustomButton style={{ width: rsWidth(170), height: rsHeight(32)}} textStyle={{fontSize:FontSize.tiny,fontWeight:"500"}} title="Apply to Perform" onPress={() =>  console.log(`Apply clicked for ${venueName}`)} />
+                    <CustomButton style={{ width: rsWidth(170), height: rsHeight(32) }} textStyle={{fontSize:FontSize.tiny,fontWeight:"500"}} title="Locate" onPress={() => console.log("Locate")} />
                 </View>                
 
                 {/* Details */}
@@ -86,7 +86,7 @@ export const EventCard: React.FC<EventCardProps> = ({
 
 const styles = StyleSheet.create({
     card: {
-        backgroundColor: "#fff",
+        backgroundColor: "#0C130E",
         borderRadius: 12,
         overflow: "hidden",
         marginVertical: 10,
@@ -124,7 +124,7 @@ const styles = StyleSheet.create({
     },
     ratingText: { color: "#fff", marginLeft: 3, fontSize: FontSize.small },
     location: { paddingHorizontal: Spacing.xs, color: "#555" },
-    details: { padding: Spacing.xs },
+    details: { padding: Spacing.md,paddingBottom:0 },
     perks: { paddingHorizontal: 10, paddingBottom: 10 },
     actions: {
         flexDirection: "row",
