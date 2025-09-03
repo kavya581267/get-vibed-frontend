@@ -32,10 +32,10 @@ export const rsBorder = (size: number, min: number = 0.5, max: number = 3) => {
 
 // 🔹 Spacing system
 export const Spacing = {
-  xs: rsFontModerate(8),
+  xs: rsFontModerate(10),
   sm: rsFontModerate(12),
   md: rsFontModerate(16),
-  lg: rsFontModerate(22),
+  lg: rsFontModerate(20),
   xl: rsFontModerate(32),
   xxl: rsFontModerate(40),
 };

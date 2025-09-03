@@ -1,11 +1,10 @@
 import { StyleSheet, View } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-import AppSafeAreaView from './src/components/AppSafeAreaView';
-import { GradientBackground } from './src/components/GradientBackground';
 import useAppFonts from './src/components/hooks/useAppFonts';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import * as SplashScreen from 'expo-splash-screen';
-import SignUpScreen from './src/screens/SignUp';
+import RootNavigator from './src/navigation/RootNavigator';
+import { GetVibedSplashScreen } from './src/screens/SplashScreen';
 {/* SafeAreaProvider is a React context provider from the react-native-safe-area-context library.
 It calculates and shares safe area inset values (like top, bottom, left, and right) for the current device.
 It must be at the top level of your app so that components below it (like AppSafeAreaView) can access the inset values.
@@ -14,10 +13,11 @@ SplashScreen.preventAutoHideAsync();
 
 export default function App() {
   const fontsLoaded = useAppFonts();
-
+  const [showSplash, setShowSplash] = useState(true);
   useEffect(() => {
     if (fontsLoaded) {
       SplashScreen.hideAsync();
+      setTimeout(() => setShowSplash(false), 2000);
     }
   }, [fontsLoaded]);
 
@@ -28,11 +28,7 @@ export default function App() {
 
     <SafeAreaProvider>
       <View style={styles.container}>
-        <GradientBackground>
-          <AppSafeAreaView >
-            <SignUpScreen />
-          </AppSafeAreaView>
-        </GradientBackground>
+        {showSplash ? <GetVibedSplashScreen /> : <RootNavigator />}
       </View>
     </SafeAreaProvider>
   );
