@@ -5,6 +5,7 @@ export const theme = {
     primary: '#14AE5C',
     secondary: '#FFFFFF',
     border : "#3F3F48",
-    input: "#D9D9D9"
+    input: "#D9D9D9",
+    bottomTab :"#BFBFBF"
   },
 };

@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import * as SplashScreen from 'expo-splash-screen';
 import RootNavigator from './src/navigation/RootNavigator';
 import { GetVibedSplashScreen } from './src/screens/SplashScreen';
+import { PaperProvider } from 'react-native-paper';
 {/* SafeAreaProvider is a React context provider from the react-native-safe-area-context library.
 It calculates and shares safe area inset values (like top, bottom, left, and right) for the current device.
 It must be at the top level of your app so that components below it (like AppSafeAreaView) can access the inset values.
@@ -25,18 +26,19 @@ export default function App() {
     return null;
   }
   return (
-
-    <SafeAreaProvider>
-      <View style={styles.container}>
-        {showSplash ? <GetVibedSplashScreen /> : <RootNavigator />}
-      </View>
-    </SafeAreaProvider>
+    <PaperProvider>
+      <SafeAreaProvider>
+        <View style={styles.container}>
+          {showSplash ? <GetVibedSplashScreen /> : <RootNavigator />}
+        </View>
+      </SafeAreaProvider>
+    </PaperProvider>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-
+    // backgroundColor: '#000',
   },
 });

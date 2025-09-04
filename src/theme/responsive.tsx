@@ -48,12 +48,14 @@ export const FontSize = {
   body: rsFontModerate(16),
   small: rsFontModerate(14),
   tiny: rsFontModerate(12),
+  tiny2: rsFontModerate(10),
 };
 
 export const Radius = {
   sm: rsModerate(4),
   md: rsModerate(8),
   lg: rsModerate(16),
+  xl: rsModerate(24),
   pill: rsModerate(250),
 };
 

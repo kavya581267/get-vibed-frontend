@@ -4,6 +4,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { FontSize, rsHeight, rsWidth, Spacing } from "../../theme/responsive";
 import CustomButton from "../../components/CustomButton";
 import { theme } from "../../theme/theme";
+import SideBarMenu from "../../components/SideBarMenu";
 
 type EventCardProps = {
     coverImage: string;
@@ -33,32 +34,36 @@ export const EventCard: React.FC<EventCardProps> = ({
     onLocate,
 }) => {
     return (
-        <View style={{ paddingBottom: Spacing.xl }}>
+        <View style={{ paddingBottom: Spacing.xl, backgroundColor: "#021d15" }}>
             {/* Head */}
-            <View style={{ paddingBottom: 10 }}>
-                <View style={{ flexDirection: 'row' }}>
+            <View style={{ paddingBottom: 10, flexDirection: "row", justifyContent: "space-between", alignItems: "center" }}>
+                <View style={{ flexDirection: 'row', paddingLeft: Spacing.md, paddingRight: Spacing.md }}>
                     <View>
-                        <Image style={{ width: rsWidth(36), height: rsHeight(36) }}  source={require('../../../assets/Ellipse.png')} resizeMode="contain" />
+                        <Image style={{ width: rsWidth(36), height: rsHeight(36) }} source={require('../../../assets/Ellipse.png')} resizeMode="contain" />
                     </View>
                     <View style={{ paddingLeft: 10 }}>
-                        <Text style={{ color: "white" , fontSize:FontSize.small,fontWeight:"600"}}>10 Downing Street, Begumpet</Text>
-                        <Text style={{ color: theme.colors.input, fontSize:FontSize.tiny }}>2h ago</Text>
+                        <Text style={{ color: "white", fontSize: FontSize.small, fontWeight: "600" }}>10 Downing Street, Begumpet</Text>
+                        <Text style={{ color: theme.colors.input, fontSize: FontSize.tiny }}>2h ago</Text>
                     </View>
+
                 </View>
+                <SideBarMenu onSave={() => console.log("Saved", venueName)}
+                    onShare={() => console.log("Shared", venueName)}
+                    onDelete={() => console.log("Reported", venueName)} />
             </View>
 
             <View>
                 {/* Cover Image */}
-                <Image style={{ width: rsWidth(402), height: rsWidth(239) }}  source={require('../../../assets/image1.png')}   resizeMode="cover" />
+                <Image style={{ width: rsWidth(402), height: rsWidth(239) }} source={require('../../../assets/image1.png')} resizeMode="cover" />
                 <View style={styles.ratingBadge}>
                     <Ionicons name="star" size={rsHeight(15)} color="#fff" />
                     <Text style={styles.ratingText}>{rating}</Text>
                 </View>
 
-                <View style={{ flexDirection: 'row', justifyContent: "space-between", paddingTop: 16 }}>
-                    <CustomButton style={{ width: rsWidth(179), height: rsHeight(32)}} textStyle={{fontSize:FontSize.tiny,fontWeight:"500"}} title="Apply to Perform" onPress={() =>  console.log(`Apply clicked for ${venueName}`)} />
-                    <CustomButton style={{ width: rsWidth(179), height: rsHeight(32) }} textStyle={{fontSize:FontSize.tiny,fontWeight:"500"}} title="Locate" onPress={() => console.log("Locate")} />
-                </View>                
+                <View style={{ flexDirection: 'row', justifyContent: "space-between", padding: Spacing.md, paddingBottom: 0 }}>
+                    <CustomButton style={{ width: rsWidth(170), height: rsHeight(32) }} textStyle={{ fontSize: FontSize.tiny, fontWeight: "500" }} title="Apply to Perform" onPress={() => console.log(`Apply clicked for ${venueName}`)} />
+                    <CustomButton style={{ width: rsWidth(170), height: rsHeight(32) }} textStyle={{ fontSize: FontSize.tiny, fontWeight: "500" }} title="Locate" onPress={() => console.log("Locate")} />
+                </View>
 
                 {/* Details */}
                 <View style={styles.details}>
@@ -86,7 +91,7 @@ export const EventCard: React.FC<EventCardProps> = ({
 
 const styles = StyleSheet.create({
     card: {
-        backgroundColor: "#fff",
+        backgroundColor: "#0C130E",
         borderRadius: 12,
         overflow: "hidden",
         marginVertical: 10,
@@ -124,7 +129,7 @@ const styles = StyleSheet.create({
     },
     ratingText: { color: "#fff", marginLeft: 3, fontSize: FontSize.small },
     location: { paddingHorizontal: Spacing.xs, color: "#555" },
-    details: { padding: Spacing.xs },
+    details: { padding: Spacing.md, paddingBottom: 0 },
     perks: { paddingHorizontal: 10, paddingBottom: 10 },
     actions: {
         flexDirection: "row",

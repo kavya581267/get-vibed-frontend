@@ -40,10 +40,11 @@ export default function Card() {
     }
 
     return (
-        <View style={{ flex: 1, padding: 16 }}>
+        <View style={{ flex: 1, backgroundColor: "#021d15" }}>
             <FlatList
                 data={data}
                 keyExtractor={(item) => item.id}
+               // initialNumToRender={3} 
                 renderItem={({ item }) => (
                     <EventCard
                         coverImage={item.coverImage}
