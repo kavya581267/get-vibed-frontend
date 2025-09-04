@@ -44,6 +44,7 @@ export default function Card() {
             <FlatList
                 data={data}
                 keyExtractor={(item) => item.id}
+               // initialNumToRender={3} 
                 renderItem={({ item }) => (
                     <EventCard
                         coverImage={item.coverImage}

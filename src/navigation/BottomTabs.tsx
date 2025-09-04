@@ -17,7 +17,7 @@ export default function BottomTab() {
         }}
             tabBar={(props) => <CustomBottomBar {...props} />}
         >
-            <Tab.Screen name="Events" component={MainTab} />
+            <Tab.Screen name="EventBottom" component={MainTab} />
             <Tab.Screen name="Parties" component={Card} />
             <Tab.Screen name="Pubs" component={Card} />
             <Tab.Screen name="Others" component={Card} />
