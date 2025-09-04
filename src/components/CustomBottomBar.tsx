@@ -1,8 +1,7 @@
 import { BottomTabBarProps } from "@react-navigation/bottom-tabs";
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import { FontSize, Radius, rsHeight, rsModerate, rsWidth, Spacing } from "../theme/responsive";
+import { FontSize, Radius, rsModerate, rsWidth, Spacing } from "../theme/responsive";
 import { theme } from "../theme/theme";
-import { transparent } from "react-native-paper/lib/typescript/styles/themes/v2/colors";
 import { Colors } from "react-native/Libraries/NewAppScreen";
 import { BlurView } from "expo-blur";
 
@@ -21,17 +20,19 @@ export default function CustomBottomBar({ state, descriptors, navigation }: Bott
             style={{
                 position: "absolute",
                 bottom: Spacing.xl,
-                left: Spacing.xl,
-                right: Spacing.xl,
-                height: rsWidth(50),
+                width: rsWidth(350),
+                height: rsModerate(50),
                 borderRadius: Radius.pill,
                 flexDirection: "row",
                 justifyContent: "space-around",
                 alignItems: "center",
                 overflow: 'hidden',
+                alignSelf:"center"
             }}
         >
-            <BlurView tint="dark" intensity={100} style={StyleSheet.absoluteFillObject} />
+           
+        <BlurView tint="dark" intensity={100} style={styles.blurBackground} />
+    
             {state.routes.map((route, index) => {
                 const isFocused = state.index === index;
 
@@ -55,7 +56,7 @@ export default function CustomBottomBar({ state, descriptors, navigation }: Bott
                         >
                             <Image
                                 source={isFocused ? bottomTabs[index].activeIcon : bottomTabs[index].inactiveIcon}
-                                style={{ width: rsWidth(20), height: rsWidth(20), resizeMode: "contain",marginBottom:rsModerate(3) }}
+                                style={{ width: rsWidth(18), height: rsWidth(18), resizeMode: "contain",marginBottom:rsModerate(3) }}
                             />
                             <Text style={{color:isFocused? theme.colors.primary : theme.colors.bottomTab,fontSize:FontSize.tiny}}>
                                 {bottomTabs[index].label}
@@ -68,3 +69,10 @@ export default function CustomBottomBar({ state, descriptors, navigation }: Bott
     );
 }
 
+const styles = StyleSheet.create({
+ 
+  blurBackground: {
+    ...StyleSheet.absoluteFillObject,
+    borderRadius: Radius.pill,
+  },
+});
