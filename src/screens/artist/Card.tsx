@@ -40,7 +40,7 @@ export default function Card() {
     }
 
     return (
-        <View style={{ flex: 1, backgroundColor: "#0C130E" }}>
+        <View style={{ flex: 1, backgroundColor: "#021d15" }}>
             <FlatList
                 data={data}
                 keyExtractor={(item) => item.id}

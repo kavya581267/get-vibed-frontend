@@ -33,7 +33,7 @@ export const EventCard: React.FC<EventCardProps> = ({
     onLocate,
 }) => {
     return (
-        <View style={{ paddingBottom: Spacing.xl, backgroundColor: "#0C130E" }}>
+        <View style={{ paddingBottom: Spacing.xl, backgroundColor: "#021d15" }}>
             {/* Head */}
             <View style={{ paddingBottom: 10 }}>
                 <View style={{ flexDirection: 'row',paddingLeft:Spacing.md,paddingRight:Spacing.md }}>

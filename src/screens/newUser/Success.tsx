@@ -23,7 +23,7 @@ export const SuccessScreen = () => {
                     </View>
                 </View>
             </View>
-            <CustomButton title="Live Young! Party Hard!" onPress={() => navigation.navigate("MainTab")} />
+            <CustomButton title="Live Young! Party Hard!" onPress={() => navigation.navigate("BottomTab")} />
         </View>
 
     )

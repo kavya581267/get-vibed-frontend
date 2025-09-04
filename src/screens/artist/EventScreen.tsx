@@ -1,20 +1,16 @@
 import {  Text, View } from "react-native";
-import AppSafeAreaView from "../../components/AppSafeAreaView";
 import { FontSize, rsHeight, rsWidth, Spacing } from "../../theme/responsive";
 import { Ionicons } from "@expo/vector-icons";
 import { theme } from "../../theme/theme";
 import Card from "./Card";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import CustomTabBar from "../../components/CustomTabBar";
-import PartiesScreen from "./Parties";
-import PubScreen from "./Pubs";
-import OtherScreen from "./Others";
 
 const Tab = createMaterialTopTabNavigator();
 
 export default function MainTab() {
     return (
-       <View style={{flex:1}}>
+       <View style={{flex:1, backgroundColor: "#021d15"}}>
             {/* header */}
             <View style={{ padding:Spacing.md,paddingBottom:0 }}>
                 <View style={{ flexDirection: "row", alignItems: "center", justifyContent: "space-between", paddingBottom: Spacing.md }}>
@@ -36,6 +32,7 @@ export default function MainTab() {
                     tabBar={(props) => <CustomTabBar {...props} />}
                     screenOptions={{
                         swipeEnabled: true,
+                      
                     }}
                 >
                     <Tab.Screen name="Events" component={Card} />
