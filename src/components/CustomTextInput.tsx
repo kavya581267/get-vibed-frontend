@@ -20,6 +20,12 @@ const CustomTextInput: React.FC<CustomTextInputProps> = ({ style, ...rest }) => 
         {...rest}
         style={[
           styles.input,
+          rest.multiline && {
+            minHeight: rsHeight(100),
+            textAlignVertical: "top", // for proper top alignment
+            paddingTop: Spacing.md,
+            borderRadius:Radius.md
+          },
           { borderColor: isFocused ? theme.colors.primary : theme.colors.border },
           style,
         ]}
