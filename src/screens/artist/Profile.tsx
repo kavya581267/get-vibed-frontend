@@ -1,10 +1,40 @@
-import { Image, ImageBackground, StyleSheet, Text, View } from "react-native";
+import { Image, ImageBackground, StyleSheet, Text, TouchableOpacity, useWindowDimensions, View } from "react-native";
 import { FontSize, rsHeight, rsModerate, rsWidth, Spacing } from "../../theme/responsive";
 import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 import { theme } from "../../theme/theme";
 import CustomButton from "../../components/CustomButton";
+import React, { useState } from "react";
+import { TabView, SceneMap, TabBar } from "react-native-tab-view";
+import EventsRoute from "./profile-routes/EventsRoute";
+import TracksRoute from "./profile-routes/TracksRoute";
+import PostsRoute from "./profile-routes/PostsRoute";
+import MoreRoute from "./profile-routes/MoreRoute";
+
+
+
+
+
 
 export default function Profile() {
+
+    const layout = useWindowDimensions();
+    const [index, setIndex] = React.useState(0);
+    const [routes] = React.useState([
+        { key: "events", title: "Upcoming Events" },
+        { key: "tracks", title: "Tracks" },
+        { key: "posts", title: "Posts" },
+        { key: "more", title: "More" },
+    ]);
+
+    const renderScene = SceneMap({
+        events: EventsRoute,
+        tracks: TracksRoute,
+        posts: PostsRoute,
+        more: MoreRoute,
+    });
+    const [expanded, setExpanded] = useState(false);
+
+    const toggleExpand = () => setExpanded(!expanded);
     return (
         <View style={styles.container}>
             <View >
@@ -34,11 +64,48 @@ export default function Profile() {
                             <Ionicons name="logo-facebook" size={rsModerate(32)} color="#fff" />
                             <Ionicons name="logo-youtube" size={rsModerate(32)} color="#fff" />
                         </View>
-                        
-                            <CustomButton title="Edit Profile" style={styles.button} textStyle={styles.buttonText} onPress={() => console.log("Edit Profile")} />
-                     
+
+                        <CustomButton title="Edit Profile" style={styles.button} textStyle={styles.buttonText} onPress={() => console.log("Edit Profile")} />
                     </View>
                 </ImageBackground>
+
+
+                {/* expandable bio */}
+
+                <Text style={styles.bio} numberOfLines={expanded ? undefined : 2}>
+                    A soulful voice with timeless charm, Tiana Franci weaves emotion into every note. From intimate ballads to soaring anthems, the music speaks straight to the heart.
+                </Text>
+
+                <TouchableOpacity onPress={toggleExpand}>
+                    <Text style={styles.toggleText}>
+                        {expanded ? "Show Less" : "Show More"}
+                    </Text>
+                </TouchableOpacity>
+
+
+                <View style={{ height: 400 }}>
+                    <TabView
+                        navigationState={{ index, routes }}
+                        renderScene={renderScene}
+                        onIndexChange={setIndex}
+                        initialLayout={{ width: layout.width }}
+
+                        renderTabBar={(props) => (
+                            <TabBar
+                                {...props}
+                               // scrollEnabled
+                                style={{ backgroundColor: "transparent" }}
+                                indicatorStyle={{ backgroundColor: "#4CAF50" ,height:2}}
+                                activeColor={theme.colors.primary}
+                                inactiveColor={theme.colors.secondary}
+                               // tabStyle={{ width: "auto" }}
+                                contentContainerStyle={{ justifyContent: "space-between" }}
+                                
+                            />
+                        )}
+                    />
+                </View>
+
             </View>
 
         </View>
@@ -81,6 +148,15 @@ const styles = StyleSheet.create({
     buttonText: {
         fontSize: FontSize.small,
         fontWeight: "600"
-    }
+    },
+    bio: {
+        fontSize: FontSize.small,
+        color: theme.colors.secondary,
+    },
+    toggleText: {
 
+        fontWeight: "600",
+        fontSize: FontSize.small,
+        color: theme.colors.secondary,
+    },
 });
