@@ -3,7 +3,7 @@ import { theme } from "../theme/theme"
 import { FontSize, rsHeight, rsWidth } from "../theme/responsive"
 import { typography } from "../theme/typography"
 import { useSafeAreaInsets } from "react-native-safe-area-context"
-import { withGradient } from "../components/hoc/withGradient"
+import { withGradientSafeArea } from "../components/hoc/withGradientSafeArea"
 
 
 const Splash = () => {
@@ -18,7 +18,7 @@ const Splash = () => {
     )
 }
 
-export const GetVibedSplashScreen =  withGradient(Splash);
+export const GetVibedSplashScreen =  withGradientSafeArea(Splash);
 
 const styles = StyleSheet.create({
 

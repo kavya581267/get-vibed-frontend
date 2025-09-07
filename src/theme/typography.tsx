@@ -33,6 +33,11 @@ import { rf, rsFontModerate } from "./responsive";
  */
 export const typography = {
 
+  family:{
+     inter : "Inter",
+    LondrinaSolid_400Regular :"LondrinaSolid_400Regular"
+  },
+
   or: {
     fontSize: rf(12),
     fontWeight: "600",
