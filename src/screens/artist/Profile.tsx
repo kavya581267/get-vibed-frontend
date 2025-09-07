@@ -18,8 +18,6 @@ import CustomTabView from "../../components/CustomTabView";
 
 export default function Profile() {
 
-    const layout = useWindowDimensions();
-    const [index, setIndex] = React.useState(0);
     const [routes] = React.useState([
         { key: "events", title: "Upcoming Events" },
         { key: "tracks", title: "Tracks" },

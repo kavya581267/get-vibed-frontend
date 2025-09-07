@@ -37,13 +37,13 @@ export default function StackNavigator<RootStackParamList>() {
          <Stack.Screen name="OtpScreen" component={withGradient(OtpScreen)} />
          <Stack.Screen name="EmailVerificationScreen" component={withGradient(EmailVerificationScreen)} />
          <Stack.Screen name="InterestsScreen" component={withGradient(InterestsScreen)} />
-         <Stack.Screen name="SuccessScreen" component={withGradient(SuccessScreen)} />
+         <Stack.Screen name="SuccessScreen" component={withGradient(SuccessScreen)} />*/}
           <Stack.Screen name="BottomTab" component={withGradient(BottomTab)} />
          <Stack.Screen name="ContactDetails" component={withGradient(ContactDetails)} options={{headerShown: true, headerBackTitle:"Apply To Perform", headerTintColor:"#fff",headerStyle:{backgroundColor:"#021d15"}}}/>
           <Stack.Screen name="BandDetails" component={withGradient(BandDetails)} options={{headerShown: true, headerBackTitle:"Apply To Perform", headerTintColor:"#fff",headerStyle:{backgroundColor:"#021d15"}}}/>
            <Stack.Screen name="Portfolio" component={withGradient(Portfolio)} options={{headerShown: true, headerBackTitle:"Apply To Perform", headerTintColor:"#fff",headerStyle:{backgroundColor:"#021d15"}}}/>
-           <Stack.Screen name="EquipmentNeeds" component={withGradient(EquipmentNeeds)} options={{headerShown: true, headerBackTitle:"Apply To Perform", headerTintColor:"#fff",headerStyle:{backgroundColor:"#021d15"}}}/>*/}
-            <Stack.Screen name="Profile" component={withGradient(Profile)} />
+           <Stack.Screen name="EquipmentNeeds" component={withGradient(EquipmentNeeds)} options={{headerShown: true, headerBackTitle:"Apply To Perform", headerTintColor:"#fff",headerStyle:{backgroundColor:"#021d15"}}}/>
+            
       </Stack.Navigator>
    )
 }
