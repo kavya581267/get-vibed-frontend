@@ -9,6 +9,7 @@ import EventsRoute from "./profile-routes/EventsRoute";
 import TracksRoute from "./profile-routes/TracksRoute";
 import PostsRoute from "./profile-routes/PostsRoute";
 import MoreRoute from "./profile-routes/MoreRoute";
+import CustomTabView from "../../components/CustomTabView";
 
 
 
@@ -83,27 +84,8 @@ export default function Profile() {
                 </TouchableOpacity>
 
 
-                <View style={{ height: 400 }}>
-                    <TabView
-                        navigationState={{ index, routes }}
-                        renderScene={renderScene}
-                        onIndexChange={setIndex}
-                        initialLayout={{ width: layout.width }}
-
-                        renderTabBar={(props) => (
-                            <TabBar
-                                {...props}
-                               // scrollEnabled
-                                style={{ backgroundColor: "transparent" }}
-                                indicatorStyle={{ backgroundColor: "#4CAF50" ,height:2}}
-                                activeColor={theme.colors.primary}
-                                inactiveColor={theme.colors.secondary}
-                               // tabStyle={{ width: "auto" }}
-                                contentContainerStyle={{ justifyContent: "space-between" }}
-                                
-                            />
-                        )}
-                    />
+                <View style={{ height: rsHeight(400) }}>
+                    <CustomTabView routes={routes} renderScene={renderScene} />
                 </View>
 
             </View>
@@ -135,7 +117,7 @@ const styles = StyleSheet.create({
     },
     overlay: {
         ...StyleSheet.absoluteFillObject,
-        backgroundColor: "rgba(0,0,0,0.3)", // darken image for better text visibility
+        //  backgroundColor: "rgba(0,0,0,0.3)", // darken image for better text visibility
     },
     details: {
         padding: 16,
@@ -152,11 +134,13 @@ const styles = StyleSheet.create({
     bio: {
         fontSize: FontSize.small,
         color: theme.colors.secondary,
+        paddingHorizontal: 16
     },
     toggleText: {
-
         fontWeight: "600",
         fontSize: FontSize.small,
         color: theme.colors.secondary,
+        paddingHorizontal: 16
     },
+
 });
