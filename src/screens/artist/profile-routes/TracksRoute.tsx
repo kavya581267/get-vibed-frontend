@@ -1,4 +1,5 @@
 import { StyleSheet, Text, View } from "react-native";
+import { FontSize } from "../../../theme/responsive";
 
 
 export default function TracksRoute() {
@@ -19,5 +20,6 @@ export const styles = StyleSheet.create({
         padding: 12,
         marginBottom: 8,
         borderRadius: 10,
+        fontSize:FontSize.small
     },
 })
