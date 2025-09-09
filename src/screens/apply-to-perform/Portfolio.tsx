@@ -7,6 +7,7 @@ import { typography } from "../../theme/typography";
 import CustomTextInput from "../../components/CustomTextInput";
 import CustomButton from "../../components/CustomButton";
 import { useNavigation } from "@react-navigation/native";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 export default function Portfolio() {
     const navigation = useNavigation();
@@ -37,7 +38,7 @@ export default function Portfolio() {
                 {/* Buttons */}
                 <View style={styles.buttonRow}>
                     <CustomButton style={styles.saveButton} title="Save Draft" onPress={() => console.log("Save Draft")} />
-                    <CustomButton style={styles.continueButton} title="Continue" onPress={() => navigation.navigate("EquipmentNeeds")} />
+                    <CustomButton style={styles.continueButton} title="Continue" iconRight={<MaterialCommunityIcons name="chevron-right" size={rsWidth(18)} color={theme.colors.secondary} />} onPress={() => navigation.navigate("EquipmentNeeds")} />
                 </View>
             </View>
         </View>
@@ -46,7 +47,7 @@ export default function Portfolio() {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1
+        flex: 1,
     },
     body: {
         flex: 1,

@@ -2,7 +2,7 @@ import React from "react";
 import { TouchableOpacity, Text, StyleSheet, ViewStyle, TextStyle, View } from "react-native";
 import { theme } from "../theme/theme"; // your color + font system
 import { typography } from "../theme/typography";
-import { FontSize, Radius, rsHeight, rsWidth } from "../theme/responsive";
+import { FontSize, Radius, rsHeight, rsWidth, Spacing } from "../theme/responsive";
 
 interface CustomButtonProps {
   title: string;
@@ -10,7 +10,8 @@ interface CustomButtonProps {
   style?: ViewStyle;
   textStyle?: TextStyle;
   disabled?: boolean;
-  icon?: React.ReactNode,
+  iconLeft?: React.ReactNode,
+  iconRight?: React.ReactNode,
 }
 
 const CustomButton: React.FC<CustomButtonProps> = ({
@@ -19,7 +20,8 @@ const CustomButton: React.FC<CustomButtonProps> = ({
   style,
   textStyle,
   disabled = false,
-  icon
+  iconLeft,
+  iconRight
 }) => {
   return (
     <TouchableOpacity
@@ -32,8 +34,9 @@ const CustomButton: React.FC<CustomButtonProps> = ({
       onPress={!disabled ? onPress : undefined}
     >
       <View style={styles.content}>
-        {icon && <View style={styles.icon}>{icon}</View>}
+        {iconLeft && <View style={styles.icon}>{iconLeft}</View>}
         <Text style={[styles.text, textStyle]}>{title}</Text>
+        {iconRight && <View style={styles.iconRight}>{iconRight}</View>}
       </View>
     </TouchableOpacity>
   );
@@ -41,12 +44,15 @@ const CustomButton: React.FC<CustomButtonProps> = ({
 
 const styles = StyleSheet.create({
   content: {
-    flexDirection: "row", 
+    flexDirection: "row",
     alignItems: "center",
-    justifyContent: "center",
+   justifyContent: "space-around",
   },
   icon: {
-    marginRight: 8, 
+    marginRight: 8,
+  },
+  iconRight: {
+    marginLeft: Spacing.xs
   },
   button: {
     width: rsWidth(356),

@@ -10,6 +10,7 @@ import InterestButton from "../../components/InterestButton";
 import { useState } from "react";
 import { AppKeyboardAvoidView } from "../../components/AppKeyboardAvoidView";
 import { useNavigation } from "@react-navigation/native";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 const interests = [
     "Rock", "Jazz", "Metal", "Blues", "Folk", "R&B/Soul", "Reggae", "Latin Music",
@@ -69,7 +70,7 @@ export default function BandDetails() {
                 {/* Buttons */}
                 <View style={styles.buttonRow}>
                     <CustomButton style={styles.saveButton} title="Save Draft" onPress={() => console.log("Save Draft")} />
-                    <CustomButton style={styles.continueButton} title="Continue" onPress={() => navigation.navigate("Portfolio")} />
+                    <CustomButton style={styles.continueButton} title="Continue" iconRight={<MaterialCommunityIcons name="chevron-right" size={rsWidth(18)} color={theme.colors.secondary} />} onPress={() => navigation.navigate("Portfolio")} />
                 </View>
             </View>
 

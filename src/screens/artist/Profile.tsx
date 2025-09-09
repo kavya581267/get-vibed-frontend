@@ -1,5 +1,5 @@
 import { Image, ImageBackground, Platform, StyleSheet, Text, TouchableOpacity, useWindowDimensions, View } from "react-native";
-import { FontSize, rsHeight, rsModerate, rsWidth, Spacing } from "../../theme/responsive";
+import { FontSize, rsFontModerate, rsHeight, rsModerate, rsWidth, Spacing } from "../../theme/responsive";
 import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 import { theme } from "../../theme/theme";
 import CustomButton from "../../components/CustomButton";
@@ -82,7 +82,7 @@ export default function Profile() {
                     <CustomTabView routes={routes} renderScene={renderScene} />
                 </View>
 
-                <CustomButton title="Upload" onPress={() => console.log("upload")} style={styles.uploadButton} icon={<MaterialCommunityIcons
+                <CustomButton title="Upload" onPress={() => console.log("upload")} style={styles.uploadButton} iconLeft={<MaterialCommunityIcons
                     name="plus-circle"
                     size={rsHeight(19.5)}
                     color={theme.colors.secondary}
@@ -144,7 +144,7 @@ const styles = StyleSheet.create({
 
     uploadButton: {
         position: "absolute",
-        bottom:Platform.OS ==="ios"? rsWidth(30) : rsWidth(0), 
+        bottom:Platform.OS ==="ios"? rsHeight(100) : rsHeight(70), 
         alignSelf: "center",
         width: rsWidth(111),
     },
