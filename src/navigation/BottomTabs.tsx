@@ -4,6 +4,7 @@ import MainTab from '../screens/artist/EventScreen';
 import { BlurView } from 'expo-blur';
 import { StyleSheet } from 'react-native';
 import CustomBottomBar from '../components/CustomBottomBar';
+import Profile from '../screens/artist/Profile';
 
 const Tab = createBottomTabNavigator();
 
@@ -18,9 +19,9 @@ export default function BottomTab() {
             tabBar={(props) => <CustomBottomBar {...props} />}
         >
             <Tab.Screen name="EventBottom" component={MainTab} />
-            <Tab.Screen name="Parties" component={Card} />
+            <Tab.Screen name="Bookings" component={Card} />
             <Tab.Screen name="Pubs" component={Card} />
-            <Tab.Screen name="Others" component={Card} />
+            <Tab.Screen name="Profile" component={Profile} />
         </Tab.Navigator>
     );
 }
