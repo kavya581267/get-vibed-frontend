@@ -1,15 +1,16 @@
 
-import { StyleSheet, Text, View } from "react-native";
-import { ProgressBar } from "../../components/ProgressBar";
-import { theme } from "../../theme/theme";
-import { FontSize, rsHeight, rsWidth, Spacing } from "../../theme/responsive";
-import { typography } from "../../theme/typography";
-import CustomTextInput from "../../components/CustomTextInput";
-import CustomButton from "../../components/CustomButton";
-import InterestButton from "../../components/InterestButton";
+import { Text, View } from "react-native";
+import { ProgressBar } from "../../../components/ProgressBar";
+import { theme } from "../../../theme/theme";
+import { rsWidth } from "../../../theme/responsive";
+import CustomTextInput from "../../../components/CustomTextInput";
+import CustomButton from "../../../components/CustomButton";
+import InterestButton from "../../../components/InterestButton";
 import { useState } from "react";
-import { AppKeyboardAvoidView } from "../../components/AppKeyboardAvoidView";
+import { AppKeyboardAvoidView } from "../../../components/AppKeyboardAvoidView";
 import { useNavigation } from "@react-navigation/native";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { styles } from "../../../styles/applyToPerformStyles/BandDetails.styles";
 
 const interests = [
     "Rock", "Jazz", "Metal", "Blues", "Folk", "R&B/Soul", "Reggae", "Latin Music",
@@ -61,7 +62,7 @@ export default function BandDetails() {
                         </View>
                         <View>
                             <Text style={styles.text}>Short Bio</Text>
-                            <CustomTextInput multiline placeholder="Write a short bio about your band/crew" placeholderTextColor="white"/>
+                            <CustomTextInput multiline placeholder="Write a short bio about your band/crew" placeholderTextColor="white" />
                         </View>
                     </View>
                 </View>
@@ -69,64 +70,10 @@ export default function BandDetails() {
                 {/* Buttons */}
                 <View style={styles.buttonRow}>
                     <CustomButton style={styles.saveButton} title="Save Draft" onPress={() => console.log("Save Draft")} />
-                    <CustomButton style={styles.continueButton} title="Continue" onPress={() => navigation.navigate("Portfolio")} />
+                    <CustomButton style={styles.continueButton} title="Continue" iconRight={<MaterialCommunityIcons name="chevron-right" size={rsWidth(18)} color={theme.colors.secondary} />} onPress={() => navigation.navigate("Portfolio")} />
                 </View>
             </View>
 
         </AppKeyboardAvoidView>
     )
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1
-    },
-    body: {
-        flex: 1,
-        justifyContent: "space-between",
-        padding: Spacing.md,
-        paddingBottom: Spacing.xl
-    },
-    textHead: {
-        color: theme.colors.secondary,
-        fontSize: FontSize.body,
-        fontWeight: "600",
-        fontFamily: typography.family.inter,
-        paddingBottom: Spacing.sm
-    },
-
-    text: {
-        fontFamily: typography.family.inter,
-        color: theme.colors.secondary,
-        fontWeight: "400",
-        fontSize: FontSize.small,
-        paddingBottom: Spacing.sm,
-        paddingTop: Spacing.sm
-    },
-    buttonRow: {
-        flexDirection: "row",
-        justifyContent: "space-between"
-    },
-    saveButton: {
-        width: rsWidth(172),
-        height: rsHeight(44),
-        backgroundColor: "none",
-        borderColor: theme.colors.secondary,
-        borderWidth: 1
-    },
-    continueButton: {
-        width: rsWidth(172),
-        height: rsHeight(44),
-    },
-    buttonText: {
-        fontSize: FontSize.small,
-        fontWeight: "600",
-        fontFamily: typography.family.inter,
-        color: theme.colors.secondary
-    },
-    grid: {
-        flexDirection: "row",
-        flexWrap: "wrap",
-    },
-
-})

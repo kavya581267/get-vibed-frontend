@@ -1,5 +1,5 @@
-import { Image, ImageBackground, StyleSheet, Text, TouchableOpacity, useWindowDimensions, View } from "react-native";
-import { FontSize, rsHeight, rsModerate, rsWidth, Spacing } from "../../theme/responsive";
+import { Image, ImageBackground, Platform, StyleSheet, Text, TouchableOpacity, useWindowDimensions, View } from "react-native";
+import { FontSize, rsFontModerate, rsHeight, rsModerate, rsWidth, Spacing } from "../../theme/responsive";
 import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 import { theme } from "../../theme/theme";
 import CustomButton from "../../components/CustomButton";
@@ -10,10 +10,6 @@ import TracksRoute from "./profile-routes/TracksRoute";
 import PostsRoute from "./profile-routes/PostsRoute";
 import MoreRoute from "./profile-routes/MoreRoute";
 import CustomTabView from "../../components/CustomTabView";
-
-
-
-
 
 
 export default function Profile() {
@@ -86,6 +82,13 @@ export default function Profile() {
                     <CustomTabView routes={routes} renderScene={renderScene} />
                 </View>
 
+                <CustomButton title="Upload" onPress={() => console.log("upload")} style={styles.uploadButton} iconLeft={<MaterialCommunityIcons
+                    name="plus-circle"
+                    size={rsHeight(19.5)}
+                    color={theme.colors.secondary}
+                />
+                } />
+
             </View>
 
         </View>
@@ -94,7 +97,6 @@ export default function Profile() {
 
 const styles = StyleSheet.create({
     container: { flex: 1, backgroundColor: "#000" },
-    // header: {flexDirection: "row",  alignItems: "center" },
     row: {
         flexDirection: "row",
         alignItems: "center"
@@ -115,7 +117,6 @@ const styles = StyleSheet.create({
     },
     overlay: {
         ...StyleSheet.absoluteFillObject,
-        //  backgroundColor: "rgba(0,0,0,0.3)", // darken image for better text visibility
     },
     details: {
         padding: 16,
@@ -140,5 +141,13 @@ const styles = StyleSheet.create({
         color: theme.colors.secondary,
         paddingHorizontal: 16
     },
+
+    uploadButton: {
+        position: "absolute",
+        bottom:Platform.OS ==="ios"? rsHeight(100) : rsHeight(70), 
+        alignSelf: "center",
+        width: rsWidth(111),
+    },
+
 
 });
