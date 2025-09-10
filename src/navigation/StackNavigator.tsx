@@ -7,13 +7,13 @@ import SignUpScreen from "../screens/newUser/SignUp";
 import { MobileVerificationScreen } from "../screens/newUser/MobileVerification";
 import MainTab from "../screens/artist/EventScreen";
 import BottomTab from "./BottomTabs";
-import ContactDetails from "../screens/apply-to-perform/ContactDetails";
 import { withGradient } from "../components/hoc/withGradient";
-import BandDetails from "../screens/apply-to-perform/BandDetails";
-import EquipmentNeeds from "../screens/apply-to-perform/EquipmentNeeds";
-import Portfolio from "../screens/apply-to-perform/Portfolio";
 import Profile from "../screens/artist/Profile";
 import { withGradientSafeArea } from "../components/hoc/withGradientSafeArea";
+import ContactDetails from "../screens/artist/apply-to-perform/ContactDetails";
+import BandDetails from "../screens/artist/apply-to-perform/BandDetails";
+import Portfolio from "../screens/artist/apply-to-perform/Portfolio";
+import EquipmentNeeds from "../screens/artist/apply-to-perform/EquipmentNeeds";
 
 
 export type RootStackParamList = {
