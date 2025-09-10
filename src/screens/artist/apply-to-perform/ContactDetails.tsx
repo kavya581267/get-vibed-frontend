@@ -1,12 +1,12 @@
-import { StyleSheet, Text, View } from "react-native";
-import { ProgressBar } from "../../components/ProgressBar";
-import { theme } from "../../theme/theme";
-import { FontSize, rsHeight, rsWidth, Spacing } from "../../theme/responsive";
-import { typography } from "../../theme/typography";
-import CustomTextInput from "../../components/CustomTextInput";
-import CustomButton from "../../components/CustomButton";
+import { Text, View } from "react-native";
+import { ProgressBar } from "../../../components/ProgressBar";
+import { theme } from "../../../theme/theme";
+import { rsWidth } from "../../../theme/responsive";
+import CustomTextInput from "../../../components/CustomTextInput";
+import CustomButton from "../../../components/CustomButton";
 import { useNavigation } from "@react-navigation/native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { styles } from "../../../styles/applyToPerformStyles/ContactDetails.styles";
 
 export default function ContactDetails() {
     const navigation = useNavigation();
@@ -47,52 +47,3 @@ export default function ContactDetails() {
     )
 }
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1
-    },
-    body: {
-        flex: 1,
-        justifyContent: "space-between",
-        padding: Spacing.md,
-        paddingBottom: Spacing.xl
-    },
-    textHead: {
-        color: theme.colors.secondary,
-        fontSize: FontSize.body,
-        fontWeight: "600",
-        fontFamily: typography.family.inter,
-        paddingBottom: Spacing.sm
-    },
-
-    text: {
-        fontFamily: typography.family.inter,
-        color: theme.colors.secondary,
-        fontWeight: "400",
-        fontSize: FontSize.small,
-        paddingBottom: Spacing.sm,
-        paddingTop: Spacing.sm
-    },
-    buttonRow: {
-        flexDirection: "row",
-        justifyContent: "space-between"
-    },
-    saveButton: {
-        width: rsWidth(172),
-        height: rsHeight(44),
-        backgroundColor:"none",
-        borderColor:theme.colors.secondary,
-        borderWidth:1
-    },
-    continueButton: {
-        width: rsWidth(172),
-        height: rsHeight(44),
-    },
-    buttonText: {
-        fontSize: FontSize.small,
-        fontWeight: "600",
-        fontFamily: typography.family.inter,
-        color: theme.colors.secondary
-    }
-
-})
