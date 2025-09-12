@@ -1,6 +1,6 @@
 
 import { Text, View } from "react-native";
-import { ProgressBar } from "../../../components/ProgressBar"; \
+import { ProgressBar } from "../../../components/ProgressBar"; 
 import CustomTextInput from "../../../components/CustomTextInput";
 import CustomButton from "../../../components/CustomButton";
 import InterestButton from "../../../components/InterestButton";
