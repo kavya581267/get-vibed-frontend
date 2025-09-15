@@ -3,6 +3,7 @@ import { View, Text, TouchableOpacity, StyleSheet, useWindowDimensions, ViewStyl
 import { SceneRendererProps, TabView } from "react-native-tab-view";
 import { theme } from "../theme/theme"; // adjust path
 import { FontSize, Spacing } from "../theme/responsive";
+import { LinearGradient } from "expo-linear-gradient";
 
 type Route = {
     key: string;
@@ -14,29 +15,37 @@ interface CustomTabViewProps {
     renderScene: (props: SceneRendererProps & { route: Route }) => React.ReactNode;
     initialIndex?: number;
     tabBarStyle?: ViewStyle;
-    activeTab?:ViewStyle;
+    activeTab?: ViewStyle;
     tabLabelStyle?: ViewStyle;
     showIndicator?: boolean;   // for bottom line
 }
 
-export default function CustomTabView({ routes, renderScene, initialIndex = 0,tabBarStyle,tabLabelStyle,activeTab,showIndicator}: CustomTabViewProps) {
+export default function CustomTabView({ routes, renderScene, initialIndex = 0, tabBarStyle, tabLabelStyle, activeTab, showIndicator }: CustomTabViewProps) {
     const layout = useWindowDimensions();
     const [index, setIndex] = useState(initialIndex);
 
     return (
         <View style={{ flex: 1 }}>
             {/* Custom Tab Bar */}
-            <View style={[styles.tabBar,tabBarStyle]}>
+            <View style={[styles.tabBar, tabBarStyle]}>
                 {routes.map((route, i) => (
                     <TouchableOpacity
                         key={route.key}
-                        style={[styles.tab,i === index ? activeTab : ""]}
+                        style={[styles.tab, i === index ? activeTab : ""]}
                         onPress={() => setIndex(i)}
                     >
+                        {i === index ? (
+                            <LinearGradient
+                                colors={["rgba(13, 13, 13, 0.36)", "rgba(20, 174, 92, 0.2304)"]}
+                                start={{ x: 0.5, y: 0 }}
+                                end={{ x: 0.5, y: 1 }}
+                                style={StyleSheet.absoluteFill} // fill parent
+                            />
+                        ) : null}
                         <Text
                             style={[
-                                styles.tabLabel,tabLabelStyle,
-                                { color: i === index ? theme.colors.primary : theme.colors.secondary }
+                                styles.tabLabel, tabLabelStyle,
+                                //  { color: i === index ? theme.colors.primary : theme.colors.secondary }
                             ]}
                         >
                             {route.title}
@@ -65,15 +74,16 @@ const styles = StyleSheet.create({
         backgroundColor: "transparent",
     },
     tab: {
-        // flex: 1,
+        flex: 1,
         paddingHorizontal: 16,
         alignItems: "center",
-       // paddingVertical: 12,
-       justifyContent:"center"
+        justifyContent: "center",
+        overflow: "hidden", //so gradient doesn’t bleed out
     },
     tabLabel: {
-        fontSize: FontSize.small,
+        fontSize: FontSize.tiny,
         fontWeight: "600",
+        color: theme.colors.secondary
     },
     indicator: {
         position: "absolute",

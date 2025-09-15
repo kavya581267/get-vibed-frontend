@@ -49,7 +49,6 @@ export default function MapWithVibers() {
     const [location, setLocation] = useState(null);
     const bottomSheetRef = useRef(null);
     const modalRef = useRef<Modalize>(null);
-    const [activeState, setActiveState] = useState("map");
     const [activeTab, setActiveTab] = useState("Vibers");
 
     const [routes] = React.useState([
@@ -102,20 +101,6 @@ export default function MapWithVibers() {
         })();
     }, []);
 
-    const renderItem = ({ item }) => (
-        <View style={styles.userCard}>
-            <Image source={{ uri: item.avatar }} style={styles.avatar} />
-            <View style={{ flex: 1 }}>
-                <Text style={styles.name}>
-                    {item.name} • {item.age}F
-                </Text>
-                <Text style={styles.city}>{item.city}</Text>
-            </View>
-            <TouchableOpacity style={styles.addBtn}>
-                <Text style={styles.addText}>+ Request</Text>
-            </TouchableOpacity>
-        </View>
-    );
 
     if (!location) return <View style={styles.container} />;
 
@@ -177,78 +162,19 @@ const styles = StyleSheet.create({
         borderColor: "#fff",
     },
 
-
-
-
     modal: {
         backgroundColor: "#0D0D0D",
         borderTopLeftRadius: 16,
         borderTopRightRadius: 16,
         paddingTop: 10,
     },
-    tabRow: {
-        flexDirection: "row",
-        justifyContent: "space-around",
-        paddingVertical: 8,
-        borderBottomWidth: 1,
-        borderBottomColor: "#222",
-    },
-    tab: {
-        paddingVertical: 6,
-        paddingHorizontal: 12,
-        borderRadius: 20,
-    },
-    activeTab: {
-        backgroundColor: "#1DB954",
-    },
-    tabText: {
-        color: "#aaa",
-        fontWeight: "600",
-    },
-    activeTabText: {
-        color: "#fff",
-    },
-    userCard: {
-        flexDirection: "row",
-        alignItems: "center",
-        padding: 12,
-        borderBottomWidth: 1,
-        borderBottomColor: "#222",
-    },
-    avatar: {
-        width: 44,
-        height: 44,
-        borderRadius: 22,
-        marginRight: 12,
-    },
-    name: {
-        color: "#fff",
-        fontWeight: "bold",
-        fontSize: 16,
-    },
-    city: {
-        color: "#888",
-        fontSize: 13,
-    },
-    addBtn: {
-        // backgroundColor: "#1DB954",
-        paddingHorizontal: 12,
-        paddingVertical: 6,
-        borderRadius: 20,
-    },
-    addText: {
-        color: "#fff",
-        fontWeight: "600",
-    },
-
-
 
     customTab: {
         borderWidth: 1,
         borderColor: theme.colors.primary,
         borderRadius: Radius.xl,
         width: rsWidth(106),
-        height: rsWidth(36)
+        height: rsHeight(36)
     },
     tabStyle: {
         paddingTop: Spacing.tiny,
