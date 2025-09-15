@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, TouchableOpacity, StyleSheet, useWindowDimensions } from "react-native";
+import { View, Text, TouchableOpacity, StyleSheet, useWindowDimensions, ViewStyle } from "react-native";
 import { SceneRendererProps, TabView } from "react-native-tab-view";
 import { theme } from "../theme/theme"; // adjust path
 import { FontSize, Spacing } from "../theme/responsive";
@@ -13,31 +13,35 @@ interface CustomTabViewProps {
     routes: Route[];
     renderScene: (props: SceneRendererProps & { route: Route }) => React.ReactNode;
     initialIndex?: number;
+    tabBarStyle?: ViewStyle;
+    activeTab?:ViewStyle;
+    tabLabelStyle?: ViewStyle;
+    showIndicator?: boolean;   // for bottom line
 }
 
-export default function CustomTabView({ routes, renderScene, initialIndex = 0 }: CustomTabViewProps) {
+export default function CustomTabView({ routes, renderScene, initialIndex = 0,tabBarStyle,tabLabelStyle,activeTab,showIndicator}: CustomTabViewProps) {
     const layout = useWindowDimensions();
     const [index, setIndex] = useState(initialIndex);
 
     return (
         <View style={{ flex: 1 }}>
             {/* Custom Tab Bar */}
-            <View style={styles.tabBar}>
+            <View style={[styles.tabBar,tabBarStyle]}>
                 {routes.map((route, i) => (
                     <TouchableOpacity
                         key={route.key}
-                        style={styles.tab}
+                        style={[styles.tab,i === index ? activeTab : ""]}
                         onPress={() => setIndex(i)}
                     >
                         <Text
                             style={[
-                                styles.tabLabel,
+                                styles.tabLabel,tabLabelStyle,
                                 { color: i === index ? theme.colors.primary : theme.colors.secondary }
                             ]}
                         >
                             {route.title}
                         </Text>
-                        {i === index && <View style={styles.indicator} />}
+                        {showIndicator && i === index && <View style={styles.indicator} />}
                     </TouchableOpacity>
                 ))}
             </View>
@@ -64,7 +68,8 @@ const styles = StyleSheet.create({
         // flex: 1,
         paddingHorizontal: 16,
         alignItems: "center",
-        paddingVertical: 12,
+       // paddingVertical: 12,
+       justifyContent:"center"
     },
     tabLabel: {
         fontSize: FontSize.small,

@@ -4,8 +4,17 @@ import MapView, { Marker } from "react-native-maps";
 import * as Location from "expo-location";
 import { Modalize } from "react-native-modalize";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
+import { SceneMap } from "react-native-tab-view";
+import EventsRoute from "./artist/profile-routes/EventsRoute";
+import CustomTabView from "../components/CustomTabView";
+import { theme } from "../theme/theme";
+import { FontSize, Radius, rsHeight, rsWidth, Spacing } from "../theme/responsive";
+import { SegmentedButtons } from "react-native-paper";
+import MapSwipeToggle from "../components/MapSwipeToggle";
 
 const { height } = Dimensions.get("window");
+
+
 
 const MOCK_VIBERS = [
     {
@@ -40,7 +49,22 @@ export default function MapWithVibers() {
     const [location, setLocation] = useState(null);
     const bottomSheetRef = useRef(null);
     const modalRef = useRef<Modalize>(null);
+    const [activeState, setActiveState] = useState("map");
     const [activeTab, setActiveTab] = useState("Vibers");
+
+    const [routes] = React.useState([
+        { key: "vibers", title: "Vibers" },
+        { key: "parties", title: "Parties" },
+        { key: "pubs", title: "Pubs" },
+        { key: "others", title: "Others" },
+    ]);
+
+    const renderScene = SceneMap({
+        vibers: EventsRoute,
+        parties: EventsRoute,
+        pubs: EventsRoute,
+        others: EventsRoute,
+    });
 
     useEffect(() => {
         // Auto open the sheet on mount
@@ -118,6 +142,10 @@ export default function MapWithVibers() {
                 ))}
             </MapView>
 
+            <View style={{ position: "absolute", top: 50, alignSelf: "center" }}>
+                <MapSwipeToggle />
+            </View>
+
             <Modalize
                 ref={modalRef}
                 alwaysOpen={height * 0.35}
@@ -126,33 +154,15 @@ export default function MapWithVibers() {
                 modalStyle={styles.modal}
                 panGestureEnabled={true}   //lets you drag the modal up/down with touch gestures.
                 closeOnOverlayTap={false}  //tapping outside won’t close it
-                flatListProps={{          //instead of wrapping a FlatList inside, you tell Modalize to directly render a FlatList inside it (prevents nested scroll warnings).
-                    data: MOCK_VIBERS,
-                    keyExtractor: (item) => item.id,
-                    renderItem: renderItem,
-                    contentContainerStyle: { paddingBottom: 40 },
-                    ListHeaderComponent: (
-                        <View style={styles.tabRow}>
-                            {TABS.map((tab) => (
-                                <TouchableOpacity
-                                    key={tab}
-                                    style={[styles.tab, activeTab === tab && styles.activeTab]}
-                                    onPress={() => setActiveTab(tab)}
-                                >
-                                    <Text
-                                        style={[
-                                            styles.tabText,
-                                            activeTab === tab && styles.activeTabText,
-                                        ]}
-                                    >
-                                        {tab}
-                                    </Text>
-                                </TouchableOpacity>
-                            ))}
-                        </View>
-                    ),
-                }}
-            />
+            >
+                <CustomTabView
+                    routes={routes}
+                    renderScene={renderScene}
+                    activeTab={styles.customTab}
+                    tabBarStyle={styles.tabStyle}
+                />
+            </Modalize>
+
         </GestureHandlerRootView>
     );
 }
@@ -166,6 +176,8 @@ const styles = StyleSheet.create({
         borderWidth: 2,
         borderColor: "#fff",
     },
+
+
 
 
     modal: {
@@ -219,7 +231,7 @@ const styles = StyleSheet.create({
         fontSize: 13,
     },
     addBtn: {
-       // backgroundColor: "#1DB954",
+        // backgroundColor: "#1DB954",
         paddingHorizontal: 12,
         paddingVertical: 6,
         borderRadius: 20,
@@ -228,5 +240,21 @@ const styles = StyleSheet.create({
         color: "#fff",
         fontWeight: "600",
     },
+
+
+
+    customTab: {
+        borderWidth: 1,
+        borderColor: theme.colors.primary,
+        borderRadius: Radius.xl,
+        width: rsWidth(106),
+        height: rsWidth(36)
+    },
+    tabStyle: {
+        paddingTop: Spacing.tiny,
+        paddingBottom: Spacing.tiny,
+        paddingRight: Spacing.xs + 1,
+        paddingLeft: Spacing.xs + 1,
+    }
 
 });
