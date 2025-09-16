@@ -14,6 +14,8 @@ import ContactDetails from "../screens/artist/apply-to-perform/ContactDetails";
 import BandDetails from "../screens/artist/apply-to-perform/BandDetails";
 import Portfolio from "../screens/artist/apply-to-perform/Portfolio";
 import EquipmentNeeds from "../screens/artist/apply-to-perform/EquipmentNeeds";
+import { Text } from "react-native";
+import { applyToPerformHeader } from "../components/ApplyToPerformHeader";
 
 
 export type RootStackParamList = {
@@ -42,10 +44,10 @@ export default function StackNavigator<RootStackParamList>() {
 
          {/* Artist Screens */}
          <Stack.Screen name="BottomTab" component={withGradientSafeArea(BottomTab)} />
-         <Stack.Screen name="ContactDetails" component={withGradient(ContactDetails)} options={{ headerShown: true, headerBackTitle: "Apply To Perform", headerTintColor: "#fff", headerStyle: { backgroundColor: "#021d15" } }} />
-         <Stack.Screen name="BandDetails" component={withGradient(BandDetails)} options={{ headerShown: true, headerBackTitle: "Apply To Perform", headerTintColor: "#fff", headerStyle: { backgroundColor: "#021d15" } }} />
-         <Stack.Screen name="Portfolio" component={withGradient(Portfolio)} options={{ headerShown: true, headerBackTitle: "Apply To Perform", headerTintColor: "#fff", headerStyle: { backgroundColor: "#021d15" } }} />
-         <Stack.Screen name="EquipmentNeeds" component={withGradient(EquipmentNeeds)} options={{ headerShown: true, headerBackTitle: "Apply To Perform", headerTintColor: "#fff", headerStyle: { backgroundColor: "#021d15" } }} />
+         <Stack.Screen name="ContactDetails" component={withGradient(ContactDetails)} options={applyToPerformHeader()}/>
+         <Stack.Screen name="BandDetails" component={withGradient(BandDetails)} options={applyToPerformHeader()} />
+         <Stack.Screen name="Portfolio" component={withGradient(Portfolio)} options={applyToPerformHeader()} />
+         <Stack.Screen name="EquipmentNeeds" component={withGradient(EquipmentNeeds)} options={applyToPerformHeader()} />
 
       </Stack.Navigator>
    )
