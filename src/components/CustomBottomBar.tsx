@@ -2,7 +2,7 @@ import { BottomTabBarProps } from "@react-navigation/bottom-tabs";
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { FontSize, Radius, rsModerate, rsWidth, Spacing } from "../theme/responsive";
 import { theme } from "../theme/theme";
-import { Colors } from "react-native/Libraries/NewAppScreen";
+// Removed invalid Colors import
 import { BlurView } from "expo-blur";
 
 
@@ -44,7 +44,7 @@ export default function CustomBottomBar({ state, descriptors, navigation }: Bott
                     >
                         <View
                             style={{
-                               backgroundColor: isFocused ? "rgba(255, 255, 255, 0.1)" : Colors.transparent,
+                            backgroundColor: isFocused ? "rgba(255, 255, 255, 0.1)" : "transparent",
                                 borderRadius: Radius.pill,
                               //  paddingHorizontal: isFocused ? Spacing.sm + 2 : 0,
                                // paddingVertical: isFocused ? Spacing.xs + 1 : 0,
@@ -76,3 +76,6 @@ const styles = StyleSheet.create({
     borderRadius: Radius.pill,
   },
 });
+
+
+// Artist -> Bands 

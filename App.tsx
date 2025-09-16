@@ -32,7 +32,7 @@ export default function App() {
     <PaperProvider>
       <SafeAreaProvider>
         <View style={styles.container}>
-          {showSplash ? <GetVibedSplashScreen /> : <MapWithVibers />}
+          {showSplash ? <GetVibedSplashScreen /> : <RootNavigator />}
         </View>
       </SafeAreaProvider>
     </PaperProvider>
