@@ -2,6 +2,7 @@ import { BottomTabBarProps } from "@react-navigation/bottom-tabs";
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { FontSize, Radius, rsModerate, rsWidth, Spacing } from "../theme/responsive";
 import { theme } from "../theme/theme";
+// Removed invalid Colors importmain
 import { BlurView } from "expo-blur";
 
 
@@ -75,3 +76,6 @@ const styles = StyleSheet.create({
     borderRadius: Radius.pill,
   },
 });
+
+
+// Artist -> Bands 
