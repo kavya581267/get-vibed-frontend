@@ -43,6 +43,7 @@ export default function CustomTabView({ routes, renderScene, initialIndex = 0, t
                                 styles.tabLabel, tabLabelStyle,
                                 { color: i === index && showIndicator ? theme.colors.primary : theme.colors.secondary }
                             ]}
+                            
                         >
                             {route.title}
                         </Text>
@@ -66,17 +67,18 @@ export default function CustomTabView({ routes, renderScene, initialIndex = 0, t
 const styles = StyleSheet.create({
     tabBar: {
         flexDirection: "row",
-        justifyContent: "space-between",
+       justifyContent: "space-between",
         backgroundColor: "transparent",
         paddingBottom: Spacing.md,
         paddingTop: Spacing.md
     },
     tab: {
-        flex: 1,
+       // flex: 1,
         paddingHorizontal: 16,
         alignItems: "center",
         justifyContent: "center",
         overflow: "hidden", //so gradient doesn’t bleed out
+        paddingBottom:Spacing.tiny
     },
     tabLabel: {
         fontSize: FontSize.tiny,
