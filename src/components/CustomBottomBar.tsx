@@ -1,6 +1,6 @@
 import { BottomTabBarProps } from "@react-navigation/bottom-tabs";
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import { FontSize, Radius, rsModerate, rsWidth, Spacing } from "../theme/responsive";
+import { FontSize, Radius, rsHeight, rsModerate, rsWidth, Spacing } from "../theme/responsive";
 import { theme } from "../theme/theme";
 // Removed invalid Colors importmain
 import { BlurView } from "expo-blur";
@@ -21,13 +21,13 @@ export default function CustomBottomBar({ state, descriptors, navigation }: Bott
                 position: "absolute",
                 bottom: Spacing.xl,
                 width: rsWidth(350),
-                height: rsModerate(50),
+                height: rsHeight(50),
                 borderRadius: Radius.pill,
                 flexDirection: "row",
                 justifyContent: "space-around",
                 alignItems: "center",
                 overflow: 'hidden',
-                alignSelf:"center"
+                alignSelf:"center",
             }}
         >
            
@@ -49,14 +49,14 @@ export default function CustomBottomBar({ state, descriptors, navigation }: Bott
                               //  paddingHorizontal: isFocused ? Spacing.sm + 2 : 0,
                                // paddingVertical: isFocused ? Spacing.xs + 1 : 0,
                                 alignItems: "center",
-                                height:rsWidth(50),
+                                height:rsHeight(50),
                                 width:rsWidth(92),
                                 justifyContent:"center"
                             }}
                         >
                             <Image
                                 source={isFocused ? bottomTabs[index].activeIcon : bottomTabs[index].inactiveIcon}
-                                style={{ width: rsWidth(18), height: rsWidth(18), resizeMode: "contain",marginBottom:rsModerate(3) }}
+                                style={{ width: rsWidth(18), height: rsHeight(18), resizeMode: "contain",marginBottom:rsModerate(3) }}
                             />
                             <Text style={{color:isFocused? theme.colors.primary : theme.colors.bottomTab,fontSize:FontSize.tiny}}>
                                 {bottomTabs[index].label}

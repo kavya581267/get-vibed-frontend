@@ -32,7 +32,6 @@ export default function MainTab() {
                     tabBar={(props) => <CustomTabBar {...props} />}
                     screenOptions={{
                         swipeEnabled: true,
-                      
                     }}
                 >
                     <Tab.Screen name="Events" component={Card} />
