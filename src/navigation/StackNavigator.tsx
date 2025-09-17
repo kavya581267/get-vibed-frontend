@@ -30,6 +30,13 @@ export type RootStackParamList = {
 }
 
 const Stack = createNativeStackNavigator();
+const steps = [
+   { name: "ContactDetails", component: ContactDetails },
+   { name: "BandDetails", component: BandDetails },
+   { name: "Portfolio", component: Portfolio },
+   { name: "EquipmentNeeds", component: EquipmentNeeds },
+];
+
 
 export default function StackNavigator<RootStackParamList>() {
    return (
@@ -44,10 +51,16 @@ export default function StackNavigator<RootStackParamList>() {
 
          {/* Artist Screens */}
          <Stack.Screen name="BottomTab" component={BottomTab} />
-         <Stack.Screen name="ContactDetails" component={withGradient(ContactDetails)} options={applyToPerformHeader()}/>
-         <Stack.Screen name="BandDetails" component={withGradient(BandDetails)} options={applyToPerformHeader()} />
-         <Stack.Screen name="Portfolio" component={withGradient(Portfolio)} options={applyToPerformHeader()} />
-         <Stack.Screen name="EquipmentNeeds" component={withGradient(EquipmentNeeds)} options={applyToPerformHeader()} />
+         {steps.map((step, index) => (
+            <Stack.Screen
+               key={step.name}
+               name={step.name}
+               component={withGradient(step.component)}
+               // ✅ pass total + index dynamically
+               options={applyToPerformHeader("Apply to Perform", index + 1, steps.length)}
+            />
+         ))}
+        
 
       </Stack.Navigator>
    )
