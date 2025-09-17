@@ -46,13 +46,12 @@ const styles = StyleSheet.create({
   content: {
     flexDirection: "row",
     alignItems: "center",
-   justifyContent: "space-around",
   },
   icon: {
-    marginRight: 8,
+    marginRight: Spacing.tiny,
   },
   iconRight: {
-    marginLeft: Spacing.xs
+    marginLeft: Spacing.sm
   },
   button: {
     width: rsWidth(356),
