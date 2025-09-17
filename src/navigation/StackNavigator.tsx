@@ -43,7 +43,7 @@ export default function StackNavigator<RootStackParamList>() {
          <Stack.Screen name="SuccessScreen" component={withGradient(SuccessScreen)} />*/}
 
          {/* Artist Screens */}
-         <Stack.Screen name="BottomTab" component={withGradientSafeArea(BottomTab)} />
+         <Stack.Screen name="BottomTab" component={BottomTab} />
          <Stack.Screen name="ContactDetails" component={withGradient(ContactDetails)} options={applyToPerformHeader()}/>
          <Stack.Screen name="BandDetails" component={withGradient(BandDetails)} options={applyToPerformHeader()} />
          <Stack.Screen name="Portfolio" component={withGradient(Portfolio)} options={applyToPerformHeader()} />

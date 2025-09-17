@@ -5,6 +5,8 @@ import { BlurView } from 'expo-blur';
 import { StyleSheet } from 'react-native';
 import CustomBottomBar from '../components/CustomBottomBar';
 import Profile from '../screens/artist/Profile';
+import { withGradient } from '../components/hoc/withGradient';
+import { withGradientSafeArea } from '../components/hoc/withGradientSafeArea';
 
 const Tab = createBottomTabNavigator();
 
@@ -18,10 +20,10 @@ export default function BottomTab() {
         }}
             tabBar={(props) => <CustomBottomBar {...props} />}
         >
-            <Tab.Screen name="EventBottom" component={MainTab} />
-            <Tab.Screen name="Bookings" component={Card} />
-            <Tab.Screen name="Pubs" component={Card} />
-            <Tab.Screen name="Profile" component={Profile} />
+            <Tab.Screen name="EventBottom" component={withGradientSafeArea(MainTab)} />
+            <Tab.Screen name="Bookings" component={withGradientSafeArea(Card)} />
+            <Tab.Screen name="Pubs" component={withGradientSafeArea(Card)} />
+            <Tab.Screen name="Profile" component={withGradient(Profile)} />
         </Tab.Navigator>
 
     );

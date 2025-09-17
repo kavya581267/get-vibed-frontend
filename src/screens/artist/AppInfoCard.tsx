@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
-import { Ionicons } from "@expo/vector-icons";
-import { FontSize, rsHeight, rsWidth, Spacing } from "../../theme/responsive";
+import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
+import { FontSize, rsBorder, rsHeight, rsWidth, Spacing } from "../../theme/responsive";
 import CustomButton from "../../components/CustomButton";
 import { theme } from "../../theme/theme";
 import SideBarMenu from "../../components/SideBarMenu";
@@ -64,8 +64,8 @@ export const EventCard: React.FC<EventCardProps> = ({
                 </View>
 
                 <View style={{ flexDirection: 'row', justifyContent: "space-between", padding: Spacing.md, paddingBottom: 0 }}>
-                    <CustomButton style={{ width: rsWidth(170), height: rsHeight(32) }} textStyle={{ fontSize: FontSize.tiny, fontWeight: "500" }} title="Apply to Perform" onPress={() => navigation.navigate("ContactDetails")} />
-                    <CustomButton style={{ width: rsWidth(170), height: rsHeight(32) }} textStyle={{ fontSize: FontSize.tiny, fontWeight: "500" }} title="Locate" onPress={() => console.log("Locate")} />
+                    <CustomButton style={{ width: rsWidth(170), height: rsHeight(32) }} textStyle={{ fontSize: FontSize.tiny, fontWeight: "500" }} title="Apply to Perform" onPress={() => navigation.navigate("ContactDetails")} iconLeft={<Ionicons name="mic" size={rsHeight(16)} color={theme.colors.secondary} /> }/>
+                    <CustomButton style={{ width: rsWidth(170), height: rsHeight(32),backgroundColor:"",borderWidth:rsBorder(0.64),borderColor:theme.colors.input}} textStyle={{ fontSize: FontSize.tiny, fontWeight: "500" }} title="Locate" onPress={() => console.log("Locate")} iconLeft={<MaterialCommunityIcons name="navigation-variant" size={rsHeight(16)} color={theme.colors.secondary} />}/>
                 </View>
 
                 {/* Details */}
