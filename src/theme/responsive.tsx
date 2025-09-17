@@ -39,6 +39,8 @@ export const Spacing = {
   lg: rsFontModerate(20),
   xl: rsFontModerate(32),
   xxl: rsFontModerate(40),
+  xxxl: rsFontModerate(50),
+  big: rsFontModerate(65),
 };
 
 // 🔹 Typography system
@@ -55,7 +57,7 @@ export const FontSize = {
 export const Radius = {
   xs: rsModerate(4),
   sm: rsModerate(8),
-  md:rsModerate(12),
+  md: rsModerate(12),
   lg: rsModerate(16),
   xl: rsModerate(24),
   pill: rsModerate(250),

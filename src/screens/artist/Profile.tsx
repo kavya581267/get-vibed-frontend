@@ -144,7 +144,7 @@ const styles = StyleSheet.create({
 
     uploadButton: {
         position: "absolute",
-        bottom:Platform.OS ==="ios"? rsWidth(25) : rsWidth(0), 
+        bottom:Platform.OS ==="ios"? rsFontModerate(35) : rsFontModerate(0), 
         alignSelf: "center",
         width: rsWidth(111),
     },

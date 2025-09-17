@@ -1,5 +1,5 @@
 import { BottomTabBarProps } from "@react-navigation/bottom-tabs";
-import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Image, Platform, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { FontSize, Radius, rsHeight, rsModerate, rsWidth, Spacing } from "../theme/responsive";
 import { theme } from "../theme/theme";
 // Removed invalid Colors importmain
@@ -19,7 +19,7 @@ export default function CustomBottomBar({ state, descriptors, navigation }: Bott
         <View
             style={{
                 position: "absolute",
-                bottom: Spacing.xl,
+                bottom: Platform.OS === "ios" ? Spacing.xxl : Spacing.big,
                 width: rsWidth(350),
                 height: rsHeight(50),
                 borderRadius: Radius.pill,
