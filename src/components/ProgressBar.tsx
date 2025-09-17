@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import { ProgressBar as PaperProgressBar } from 'react-native-paper';
-import { rsHeight } from '../theme/responsive';
+import { rsHeight, Spacing } from '../theme/responsive';
 
 interface ProgressBarProps {
   currentStep: number;
@@ -12,7 +12,7 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({ currentStep, totalStep
   const progress = currentStep / totalSteps;
   
   return (
-    <View>
+    <View style={{paddingTop:Spacing.xs}}>
       <PaperProgressBar 
         progress={progress} 
         color="#00c853" 

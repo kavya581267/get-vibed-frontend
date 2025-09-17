@@ -79,7 +79,7 @@ export default function Profile() {
 
 
                 <View style={{ height: rsHeight(400) }}>
-                    <CustomTabView routes={routes} renderScene={renderScene} />
+                    <CustomTabView routes={routes} renderScene={renderScene} showIndicator={true} tabLabelStyle={styles.tabLabel}/>
                 </View>
 
                 <CustomButton title="Upload" onPress={() => console.log("upload")} style={styles.uploadButton} iconLeft={<MaterialCommunityIcons
@@ -144,10 +144,13 @@ const styles = StyleSheet.create({
 
     uploadButton: {
         position: "absolute",
-        bottom:Platform.OS ==="ios"? rsHeight(100) : rsHeight(70), 
+        bottom:Platform.OS ==="ios"? rsFontModerate(35) : rsFontModerate(0), 
         alignSelf: "center",
         width: rsWidth(111),
     },
+    tabLabel:{
+        fontSize:FontSize.small
+    }
 
 
 });

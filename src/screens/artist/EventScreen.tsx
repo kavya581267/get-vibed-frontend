@@ -1,10 +1,11 @@
 import {  Text, View } from "react-native";
 import { FontSize, rsHeight, rsWidth, Spacing } from "../../theme/responsive";
-import { Ionicons } from "@expo/vector-icons";
+import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 import { theme } from "../../theme/theme";
 import Card from "./Card";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import CustomTabBar from "../../components/CustomTabBar";
+import OtherScreen from "./Others";
 
 const Tab = createMaterialTopTabNavigator();
 
@@ -15,8 +16,8 @@ export default function MainTab() {
             <View style={{ padding:Spacing.md,paddingBottom:0 }}>
                 <View style={{ flexDirection: "row", alignItems: "center", justifyContent: "space-between", paddingBottom: Spacing.md }}>
                     <View style={{ flexDirection: "row", alignItems: "center" }}>
-                        <Ionicons name="navigate" size={rsHeight(24)} color={theme.colors.primary} style={{ transform: [{ scaleX: -1 }] }} />
-                        <Text style={{ color: "#F3F3F3", fontSize: FontSize.small, marginLeft: Spacing.xs }}>
+                        <MaterialCommunityIcons name="navigation" size={rsHeight(24)} color={theme.colors.primary} style={{ transform: [{ rotate: "-40deg" }] }}  />
+                        <Text style={{ color: "#F3F3F3", fontSize: FontSize.small, marginLeft: Spacing.tiny}}>
                             Jubilee Hills, Hyderabad
                         </Text>
                         <Ionicons name="chevron-down" size={rsWidth(14)} color="white" style={{ marginLeft: Spacing.xs }} />
@@ -32,7 +33,6 @@ export default function MainTab() {
                     tabBar={(props) => <CustomTabBar {...props} />}
                     screenOptions={{
                         swipeEnabled: true,
-                      
                     }}
                 >
                     <Tab.Screen name="Events" component={Card} />

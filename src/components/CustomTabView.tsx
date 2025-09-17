@@ -3,7 +3,7 @@ import { View, Text, TouchableOpacity, StyleSheet, useWindowDimensions, ViewStyl
 import { SceneRendererProps, TabView } from "react-native-tab-view";
 import { theme } from "../theme/theme"; // adjust path
 import { FontSize, Spacing } from "../theme/responsive";
-import { LinearGradient } from "expo-linear-gradient";
+import { ActiveTabGradientBackground } from "./ActiveTabGradientBackground";
 
 type Route = {
     key: string;
@@ -34,19 +34,16 @@ export default function CustomTabView({ routes, renderScene, initialIndex = 0, t
                         style={[styles.tab, i === index ? activeTab : ""]}
                         onPress={() => setIndex(i)}
                     >
-                        {i === index ? (
-                            <LinearGradient
-                                colors={["rgba(13, 13, 13, 0.36)", "rgba(20, 174, 92, 0.2304)"]}
-                                start={{ x: 0.5, y: 0 }}
-                                end={{ x: 0.5, y: 1 }}
-                                style={StyleSheet.absoluteFill} // fill parent
-                            />
+                        {i === index && !showIndicator ? (
+                            <ActiveTabGradientBackground />
                         ) : null}
+
                         <Text
                             style={[
                                 styles.tabLabel, tabLabelStyle,
-                                //  { color: i === index ? theme.colors.primary : theme.colors.secondary }
+                                { color: i === index && showIndicator ? theme.colors.primary : theme.colors.secondary }
                             ]}
+                            
                         >
                             {route.title}
                         </Text>
@@ -70,15 +67,18 @@ export default function CustomTabView({ routes, renderScene, initialIndex = 0, t
 const styles = StyleSheet.create({
     tabBar: {
         flexDirection: "row",
-        justifyContent: "space-between",
+       justifyContent: "space-between",
         backgroundColor: "transparent",
+        paddingBottom: Spacing.md,
+        paddingTop: Spacing.md
     },
     tab: {
-        flex: 1,
+       // flex: 1,
         paddingHorizontal: 16,
         alignItems: "center",
         justifyContent: "center",
         overflow: "hidden", //so gradient doesn’t bleed out
+        paddingBottom:Spacing.tiny
     },
     tabLabel: {
         fontSize: FontSize.tiny,
