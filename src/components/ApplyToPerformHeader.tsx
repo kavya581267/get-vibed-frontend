@@ -14,7 +14,7 @@ export const applyToPerformHeader = (
     headerStyle: { backgroundColor: "#021d15" },
     headerTintColor: "#fff",
 
-    headerLeft: ({ tintColor, canGoBack }: any) =>
+    headerLeft: ({ canGoBack }: any) =>
       canGoBack ? (
         <TouchableOpacity
           style={{ flexDirection: "row", alignItems: "center" }}

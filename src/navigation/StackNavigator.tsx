@@ -51,6 +51,7 @@ export default function StackNavigator<RootStackParamList>() {
 
          {/* Artist Screens */}
          <Stack.Screen name="BottomTab" component={BottomTab} />
+         {/* Apply To Perform*/}
          {steps.map((step, index) => (
             <Stack.Screen
                key={step.name}
@@ -61,6 +62,7 @@ export default function StackNavigator<RootStackParamList>() {
             />
          ))}
         
+
 
       </Stack.Navigator>
    )

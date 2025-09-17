@@ -1,10 +1,11 @@
 import { Text, View } from "react-native";
+import MapWithVibers from "../map";
 
 
 export default function OtherScreen ( ) {
     return(
         <View>
-            <Text>Other</Text>
+            <MapWithVibers/>
         </View>
     )
 }

@@ -5,6 +5,7 @@ import { theme } from "../../theme/theme";
 import Card from "./Card";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import CustomTabBar from "../../components/CustomTabBar";
+import OtherScreen from "./Others";
 
 const Tab = createMaterialTopTabNavigator();
 

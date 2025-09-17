@@ -7,6 +7,7 @@ import CustomBottomBar from '../components/CustomBottomBar';
 import Profile from '../screens/artist/Profile';
 import { withGradient } from '../components/hoc/withGradient';
 import { withGradientSafeArea } from '../components/hoc/withGradientSafeArea';
+import MapWithVibers from '../screens/map';
 
 const Tab = createBottomTabNavigator();
 
@@ -22,7 +23,7 @@ export default function BottomTab() {
         >
             <Tab.Screen name="EventBottom" component={withGradientSafeArea(MainTab)} />
             <Tab.Screen name="Bookings" component={withGradientSafeArea(Card)} />
-            <Tab.Screen name="Pubs" component={withGradientSafeArea(Card)} />
+            <Tab.Screen name="Pubs" component={withGradientSafeArea(MapWithVibers)} />
             <Tab.Screen name="Profile" component={withGradient(Profile)} />
         </Tab.Navigator>
 

@@ -7,7 +7,7 @@ import { BlurView } from "expo-blur";
 
 
 
-export default function CustomBottomBar({ state, descriptors, navigation }: BottomTabBarProps) {
+export default function CustomBottomBar({ state, descriptors, navigation, insets }: BottomTabBarProps) {
     const bottomTabs = [
         { label: "Events", activeIcon: require("../../assets/event-fill.png"), inactiveIcon: require("../../assets/event.png") },
         { label: "Bookings", activeIcon: require("../../assets/booking-fill.png"), inactiveIcon: require("../../assets/booking.png") },
