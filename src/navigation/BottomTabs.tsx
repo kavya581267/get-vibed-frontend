@@ -1,4 +1,4 @@
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createBottomTabNavigator, TransitionPresets } from '@react-navigation/bottom-tabs';
 import Card from '../screens/artist/Card';
 import MainTab from '../screens/artist/EventScreen';
 import { BlurView } from 'expo-blur';
@@ -18,6 +18,7 @@ export default function BottomTab() {
             tabBarBackground: () => (
                 <BlurView tint="light" intensity={100} style={StyleSheet.absoluteFill} />
             ),
+            animation: "shift",      
         }}
             tabBar={(props) => <CustomBottomBar {...props} />}
         >
