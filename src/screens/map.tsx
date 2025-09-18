@@ -145,6 +145,7 @@ export default function MapWithVibers() {
                     renderScene={renderScene}
                     activeTab={styles.customTab}
                     tabBarStyle={styles.tabStyle}
+                    tabStyle = {{flex:1}}
                 />
             </Modalize>
 

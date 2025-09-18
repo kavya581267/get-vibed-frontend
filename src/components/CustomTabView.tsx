@@ -14,13 +14,14 @@ interface CustomTabViewProps {
     routes: Route[];
     renderScene: (props: SceneRendererProps & { route: Route }) => React.ReactNode;
     initialIndex?: number;
+    tabStyle?:ViewStyle;
     tabBarStyle?: ViewStyle;
     activeTab?: ViewStyle;
     tabLabelStyle?: ViewStyle;
     showIndicator?: boolean;   // for bottom line
 }
 
-export default function CustomTabView({ routes, renderScene, initialIndex = 0, tabBarStyle, tabLabelStyle, activeTab, showIndicator }: CustomTabViewProps) {
+export default function CustomTabView({ routes, renderScene, initialIndex = 0,tabStyle, tabBarStyle, tabLabelStyle, activeTab, showIndicator }: CustomTabViewProps) {
     const layout = useWindowDimensions();
     const [index, setIndex] = useState(initialIndex);
 
@@ -31,7 +32,7 @@ export default function CustomTabView({ routes, renderScene, initialIndex = 0, t
                 {routes.map((route, i) => (
                     <TouchableOpacity
                         key={route.key}
-                        style={[styles.tab, i === index ? activeTab : ""]}
+                        style={[styles.tab,tabStyle, i === index ? activeTab : ""]}
                         onPress={() => setIndex(i)}
                     >
                         {i === index && !showIndicator ? (
@@ -73,7 +74,7 @@ const styles = StyleSheet.create({
         paddingTop: Spacing.md
     },
     tab: {
-        flex: 1,
+       // flex: 1,
         paddingHorizontal: 16,
         alignItems: "center",
         justifyContent: "center",
