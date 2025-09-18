@@ -18,11 +18,12 @@ export default function BottomTab() {
             tabBarBackground: () => (
                 <BlurView tint="light" intensity={100} style={StyleSheet.absoluteFill} />
             ),
-            animation: "shift",      
+            animation: "shift", 
         }}
+         detachInactiveScreens={false}
             tabBar={(props) => <CustomBottomBar {...props} />}
         >
-            <Tab.Screen name="EventBottom" component={withGradientSafeArea(MainTab)} />
+            <Tab.Screen name="EventBottom" component={withGradientSafeArea(MainTab)}  />
             <Tab.Screen name="Bookings" component={withGradientSafeArea(Card)} />
             <Tab.Screen name="Pubs" component={withGradientSafeArea(MapWithVibers)} />
             <Tab.Screen name="Profile" component={withGradient(Profile)} />
