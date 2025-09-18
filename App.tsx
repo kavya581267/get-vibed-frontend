@@ -20,7 +20,7 @@ export default function App() {
   useEffect(() => {
     if (fontsLoaded) {
       SplashScreen.hideAsync();
-      setTimeout(() => setShowSplash(false), 2000);
+      setTimeout(() => setShowSplash(false), 7000);
     }
   }, [fontsLoaded]);
 
