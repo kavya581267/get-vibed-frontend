@@ -1,4 +1,4 @@
-import { createBottomTabNavigator, TransitionPresets } from '@react-navigation/bottom-tabs';
+import { createBottomTabNavigator, TransitionPresets, TransitionSpecs } from '@react-navigation/bottom-tabs';
 import Card from '../screens/artist/Card';
 import MainTab from '../screens/artist/EventScreen';
 import { BlurView } from 'expo-blur';

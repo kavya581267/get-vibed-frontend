@@ -74,7 +74,6 @@ const styles = StyleSheet.create({
         paddingTop: Spacing.md
     },
     tab: {
-       // flex: 1,
         paddingHorizontal: 16,
         alignItems: "center",
         justifyContent: "center",
