@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, JSX } from "react";
 import { View, StyleSheet, Image, Text, FlatList, Dimensions, TouchableOpacity } from "react-native";
 import MapView, { Marker } from "react-native-maps";
 import * as Location from "expo-location";
@@ -11,6 +11,9 @@ import { theme } from "../theme/theme";
 import { FontSize, Radius, rsHeight, rsWidth, Spacing } from "../theme/responsive";
 import { SegmentedButtons } from "react-native-paper";
 import MapSwipeToggle from "../components/MapSwipeToggle";
+import VibersTab from "./artist/map/VibersTab";
+import Profile from "./artist/Profile";
+import PartiesScreen from "./artist/Parties";
 
 const { height } = Dimensions.get("window");
 
@@ -59,10 +62,10 @@ export default function MapWithVibers() {
     ]);
 
     const renderScene = SceneMap({
-        vibers: EventsRoute,
+        vibers: VibersTab,
         parties: EventsRoute,
-        pubs: EventsRoute,
-        others: EventsRoute,
+        pubs: Profile,
+        others: PartiesScreen,
     });
 
     useEffect(() => {
@@ -145,6 +148,7 @@ export default function MapWithVibers() {
                     renderScene={renderScene}
                     activeTab={styles.customTab}
                     tabBarStyle={styles.tabStyle}
+                    tabStyle={{ flex: 1 }}
                 />
             </Modalize>
 

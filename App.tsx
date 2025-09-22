@@ -20,7 +20,7 @@ export default function App() {
   useEffect(() => {
     if (fontsLoaded) {
       SplashScreen.hideAsync();
-      setTimeout(() => setShowSplash(false), 2000);
+      setTimeout(() => setShowSplash(false), 4000);
     }
   }, [fontsLoaded]);
 
@@ -28,11 +28,11 @@ export default function App() {
     return null;
   }
   return (
-  
+
     <PaperProvider>
       <SafeAreaProvider>
         <View style={styles.container}>
-        {showSplash ? <GetVibedSplashScreen /> : <RootNavigator />}
+          {showSplash ? <GetVibedSplashScreen /> : <RootNavigator />}
         </View>
       </SafeAreaProvider>
     </PaperProvider>

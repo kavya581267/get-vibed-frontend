@@ -5,6 +5,7 @@ import { typography } from "../theme/typography"
 import { useSafeAreaInsets } from "react-native-safe-area-context"
 import { withGradientSafeArea } from "../components/hoc/withGradientSafeArea"
 import { useEffect, useRef } from "react"
+import { withAnimatedGradient } from "../components/hoc/withAnimatedGradient"
 
 
 const Splash = () => {
@@ -70,7 +71,7 @@ const Splash = () => {
     )
 }
 
-export const GetVibedSplashScreen = withGradientSafeArea(Splash);
+export const GetVibedSplashScreen = withAnimatedGradient(Splash);
 
 const styles = StyleSheet.create({
 
