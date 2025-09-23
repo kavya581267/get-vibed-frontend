@@ -7,6 +7,7 @@ import RootNavigator from './src/navigation/RootNavigator';
 import { GetVibedSplashScreen } from './src/screens/SplashScreen';
 import { PaperProvider } from 'react-native-paper';
 import MapWithVibers from './src/screens/map';
+import SwipeCard from './src/screens/artist/SwipeCard';
 
 {/* SafeAreaProvider is a React context provider from the react-native-safe-area-context library.
 It calculates and shares safe area inset values (like top, bottom, left, and right) for the current device.
@@ -32,7 +33,7 @@ export default function App() {
     <PaperProvider>
       <SafeAreaProvider>
         <View style={styles.container}>
-          {showSplash ? <GetVibedSplashScreen /> : <RootNavigator />}
+          {showSplash ? <GetVibedSplashScreen /> : <SwipeCard />}
         </View>
       </SafeAreaProvider>
     </PaperProvider>

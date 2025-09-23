@@ -6,8 +6,8 @@ import { theme } from "../theme/theme";
 
 interface InterestButtonProps {
     label: string;
-    selected: boolean;
-    onPress: () => void;
+    selected?: boolean;
+    onPress?: () => void;
     style?: ViewStyle | ViewStyle[];
     textStyle?: TextStyle | TextStyle[];
 }
