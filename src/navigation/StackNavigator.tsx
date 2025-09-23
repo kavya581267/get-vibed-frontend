@@ -16,6 +16,8 @@ import Portfolio from "../screens/artist/apply-to-perform/Portfolio";
 import EquipmentNeeds from "../screens/artist/apply-to-perform/EquipmentNeeds";
 import { Text } from "react-native";
 import { applyToPerformHeader } from "../components/ApplyToPerformHeader";
+import SwipeCard from "../screens/artist/SwipeCard";
+import MapWithVibers from "../screens/map";
 
 
 export type RootStackParamList = {
@@ -61,7 +63,8 @@ export default function StackNavigator<RootStackParamList>() {
                options={applyToPerformHeader("Apply to Perform", index + 1, steps.length)}
             />
          ))}
-        
+         <Stack.Screen name="SwipeCard" component={withGradient(SwipeCard)} />
+         <Stack.Screen name="MapWithVibers" component={withGradientSafeArea(MapWithVibers)} />
 
 
       </Stack.Navigator>
