@@ -6,7 +6,7 @@ import { StyleSheet } from 'react-native';
 import CustomBottomBar from '../components/CustomBottomBar';
 import { withGradient } from '../components/hoc/withGradient';
 import { withGradientSafeArea } from '../components/hoc/withGradientSafeArea';
-import MapWithVibers from '../screens/artist/map-and-swipe/map';
+import MapWithVibers from '../screens/artist/map-and-swipe/mapScreen';
 import MapSwipeScreen from '../screens/artist/map-and-swipe/MapSwipeScreen';
 import Profile from '../screens/artist/top-tab-view-routes/Profile';
 

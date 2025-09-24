@@ -15,7 +15,7 @@ import Portfolio from "../screens/artist/apply-to-perform/Portfolio";
 import EquipmentNeeds from "../screens/artist/apply-to-perform/EquipmentNeeds";
 import { Text } from "react-native";
 import { applyToPerformHeader } from "../components/ApplyToPerformHeader";
-import MapWithVibers from "../screens/artist/map-and-swipe/map";
+import MapWithVibers from "../screens/artist/map-and-swipe/mapScreen";
 import SwipeCard from "../screens/artist/map-and-swipe/SwipeCard";
 
 

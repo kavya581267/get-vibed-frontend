@@ -13,7 +13,6 @@ import { SegmentedButtons } from "react-native-paper";
 import VibersTab from "./VibersTab";
 import PartiesScreen from "../top-tab-view-routes/Parties";
 import Profile from "../top-tab-view-routes/Profile";
-import MapSwipeToggle from "../../../components/MapSwipeToggle";
 
 const { height } = Dimensions.get("window");
 
@@ -48,7 +47,7 @@ const MOCK_VIBERS = [
 
 const TABS = ["Vibers", "Parties", "Pubs", "Other"];
 
-export default function MapWithVibers() {
+export default function MapScreen() {
     const [location, setLocation] = useState(null);
     const bottomSheetRef = useRef(null);
     const modalRef = useRef<Modalize>(null);
@@ -129,10 +128,6 @@ export default function MapWithVibers() {
                     </Marker>
                 ))}
             </MapView>
-
-            <View style={{ position: "absolute", top: 50, alignSelf: "center" }}>
-                <MapSwipeToggle />
-            </View>
 
             <Modalize
                 ref={modalRef}

@@ -16,6 +16,7 @@ import InterestButton from "../../../components/InterestButton";
 const SCREEN_WIDTH = Dimensions.get("window").width;
 
 interface CardItem {
+    id: number;
     name: string;
     image: any; // { uri: string } for remote OR require("./local.png") for local
     age: number;
@@ -78,50 +79,18 @@ const TinderSwipe: React.FC<TinderSwipeProps> = ({ data }) => {
     });
 
     // Render cards
-    const renderCards = () => {
-        if (!data || data.length === 0) return null;
-
-        // Only pick next 3 cards to render
-        return data
-            .slice(index, index + 3)
+    const renderCards = () =>
+        data.slice(index, index + 3)
             .map((item, i) => {
                 if (!item) return null;
-
-                // i=0 → top, i=1 → middle, i=2 → back
                 let cardStyle: any = {};
-                if (i === 0) {
-                    cardStyle = {
-                        top: rsFontModerate(176),
-                        transform: [
-                            { translateX: position.x },
-                            { translateY: position.y },
-                            { rotate: rotate },
-                        ],
-                    };
-                } else if (i === 1) {
-                    cardStyle = {
-                        top: rsModerate(163),
-                        transform: [{ scale: 0.97 }],
-                    };
-                } else if (i === 2) {
-                    cardStyle = {
-                        top: rsModerate(148),
-                        transform: [{ scale: 0.94 }],
-                    };
-                }
-
+                if (i === 0) cardStyle = { top: 50, transform: [{ translateX: position.x }, { translateY: position.y }, { rotate }] };
+                if (i === 1) cardStyle = { top: 30, transform: [{ scale: 0.97 }] };
+                if (i === 2) cardStyle = { top: 10, transform: [{ scale: 0.94 }] };
                 return (
-                    <Animated.View
-                        key={index + i}
-                        {...(i === 0 ? swipePanResponder.panHandlers : {})} // Only top card is swipeable
-                        style={[styles.card, cardStyle]}
-                    >
+                    <Animated.View key={item.id} {...(i === 0 ? swipePanResponder.panHandlers : {})} style={[styles.card, cardStyle]}>
                         <ImageBackground source={item.image} style={styles.image}>
-                            <LinearGradient
-                                colors={["transparent", "rgba(0,0,0,0.7)"]} // top → bottom
-                                style={styles.gradient}
-                            >
-
+                            <LinearGradient colors={["transparent", "rgba(0,0,0,0.7)"]} style={styles.gradient}>
                                 <View style={{ flexDirection: "row", marginLeft: Spacing.md }}>
                                     <Text style={styles.text}>{item.name}</Text>
                                     <Text style={styles.textAge}>{item.age}</Text>
@@ -132,21 +101,16 @@ const TinderSwipe: React.FC<TinderSwipeProps> = ({ data }) => {
                     </Animated.View>
                 );
             })
-            .reverse(); // Draw back card first
-    };
-
+            .reverse();
     return (
         <View style={styles.container}>
-            <View style={styles.cardStack}>{renderCards()}</View>
-            {data[index] && (
+            <View style={styles.swipeContainer}>
+                <View style={styles.cardStack}>{renderCards()}</View>
                 <View style={styles.bioContainer}>
                     <Text style={styles.bioTitle}>Bio</Text>
-                    <Text style={styles.bioText}>{data[index].bio || "No bio available"}</Text>
-                </View>)}
-            <View style={styles.grid}>
-                {interests.map((item, index) => (
-                    <InterestButton key={index} label={item} />
-                ))}
+                    <Text style={styles.bioText}>{data[index].bio}</Text>
+                </View>
+                <View style={styles.grid}>{interests.map((item, idx) => <InterestButton key={idx} label={item} />)}</View>
             </View>
         </View>
     )
@@ -204,20 +168,10 @@ const styles = StyleSheet.create({
         justifyContent: "flex-end",
         // paddingBottom: Spacing.md,
     },
-    bioContainer: {
-        // alignSelf: "flex-start",
-        paddingHorizontal: 20,
-    },
-    bioTitle: {
-        fontSize: FontSize.body,
-        fontWeight: "600",
-        color: theme.colors.secondary,
-        marginBottom: 6,
-    },
-    bioText: {
-        fontSize: FontSize.body,
-        color: "#8C8C8C",
-    },
+    swipeContainer: { flex: 1, justifyContent: "center", alignItems: "center" },
+    bioContainer: { paddingHorizontal: 20, paddingBottom: 10 },
+    bioTitle: { fontSize: FontSize.body, fontWeight: "600", color: theme.colors.secondary, marginBottom: 6 },
+    bioText: { fontSize: FontSize.body, color: "#8C8C8C" },
     cardStack: {
         flex: 1,
         justifyContent: "center",
