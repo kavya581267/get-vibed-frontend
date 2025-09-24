@@ -10,10 +10,10 @@ import CustomTabView from "../components/CustomTabView";
 import { theme } from "../theme/theme";
 import { FontSize, Radius, rsHeight, rsWidth, Spacing } from "../theme/responsive";
 import { SegmentedButtons } from "react-native-paper";
-import MapSwipeToggle from "../components/MapSwipeToggle";
 import VibersTab from "./artist/map/VibersTab";
-import Profile from "./artist/Profile";
-import PartiesScreen from "./artist/Parties";
+import PartiesScreen from "./artist/top-tab-view-routes/Parties";
+import Profile from "./artist/top-tab-view-routes/Profile";
+import MapSwipeToggle from "../components/MapSwipeToggle";
 
 const { height } = Dimensions.get("window");
 

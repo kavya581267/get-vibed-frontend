@@ -1,11 +1,11 @@
 import {  Text, View } from "react-native";
-import { FontSize, rsHeight, rsWidth, Spacing } from "../../theme/responsive";
+import { FontSize, rsHeight, rsWidth, Spacing } from "../../../theme/responsive";
 import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
-import { theme } from "../../theme/theme";
+import { theme } from "../../../theme/theme";
 import Card from "./Card";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
-import CustomTabBar from "../../components/CustomTabBar";
-import OtherScreen from "./Others";
+import CustomTabBar from "../../../components/CustomTabBar";
+
 
 const Tab = createMaterialTopTabNavigator();
 

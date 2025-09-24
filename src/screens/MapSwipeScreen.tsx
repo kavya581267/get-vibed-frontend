@@ -21,9 +21,9 @@ import { Modalize } from "react-native-modalize";
 import CustomTabView from "../components/CustomTabView";
 import VibersTab from "./artist/map/VibersTab";
 import EventsRoute from "./artist/profile-routes/EventsRoute";
-import Profile from "./artist/Profile";
-import PartiesScreen from "./artist/Parties";
+import PartiesScreen from "./artist/top-tab-view-routes/Parties";
 import { SceneMap } from "react-native-tab-view";
+import Profile from "./artist/top-tab-view-routes/Profile";
 
 const SCREEN_WIDTH = Dimensions.get("window").width;
 const { height } = Dimensions.get("window");

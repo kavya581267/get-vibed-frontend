@@ -5,7 +5,7 @@ import { InterestsScreen } from "../screens/newUser/Interests";
 import { SuccessScreen } from "../screens/newUser/Success";
 import SignUpScreen from "../screens/newUser/SignUp";
 import { MobileVerificationScreen } from "../screens/newUser/MobileVerification";
-import MainTab from "../screens/artist/EventScreen";
+import MainTab from "../screens/artist/main-page/EventScreen";
 import BottomTab from "./BottomTabs";
 import { withGradient } from "../components/hoc/withGradient";
 import Profile from "../screens/artist/Profile";
