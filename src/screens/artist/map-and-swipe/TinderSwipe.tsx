@@ -8,10 +8,10 @@ import {
     Dimensions,
     ImageBackground,
 } from "react-native";
-import { FontSize, rsFontModerate, rsHeight, rsModerate, rsWidth, Spacing } from "../../theme/responsive";
-import { theme } from "../../theme/theme";
+import { FontSize, rsFontModerate, rsHeight, rsModerate, rsWidth, Spacing } from "../../../theme/responsive";
+import { theme } from "../../../theme/theme";
 import { LinearGradient } from "expo-linear-gradient";
-import InterestButton from "../../components/InterestButton";
+import InterestButton from "../../../components/InterestButton";
 
 const SCREEN_WIDTH = Dimensions.get("window").width;
 

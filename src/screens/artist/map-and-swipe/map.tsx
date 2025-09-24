@@ -5,15 +5,15 @@ import * as Location from "expo-location";
 import { Modalize } from "react-native-modalize";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { SceneMap } from "react-native-tab-view";
-import EventsRoute from "./artist/profile-routes/EventsRoute";
-import CustomTabView from "../components/CustomTabView";
-import { theme } from "../theme/theme";
-import { FontSize, Radius, rsHeight, rsWidth, Spacing } from "../theme/responsive";
+import EventsRoute from "../profile-routes/EventsRoute";
+import CustomTabView from "../../../components/CustomTabView";
+import { theme } from "../../../theme/theme";
+import { FontSize, Radius, rsHeight, rsWidth, Spacing } from "../../../theme/responsive";
 import { SegmentedButtons } from "react-native-paper";
-import VibersTab from "./artist/map/VibersTab";
-import PartiesScreen from "./artist/top-tab-view-routes/Parties";
-import Profile from "./artist/top-tab-view-routes/Profile";
-import MapSwipeToggle from "../components/MapSwipeToggle";
+import VibersTab from "./VibersTab";
+import PartiesScreen from "../top-tab-view-routes/Parties";
+import Profile from "../top-tab-view-routes/Profile";
+import MapSwipeToggle from "../../../components/MapSwipeToggle";
 
 const { height } = Dimensions.get("window");
 

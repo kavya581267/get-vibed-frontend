@@ -6,7 +6,7 @@ import * as SplashScreen from 'expo-splash-screen';
 import RootNavigator from './src/navigation/RootNavigator';
 import { GetVibedSplashScreen } from './src/screens/SplashScreen';
 import { PaperProvider } from 'react-native-paper';
-import MapWithVibers from './src/screens/map';
+import MapWithVibers from './src/screens/artist/map-and-swipe/map';
 import SwipeCard from './src/screens/artist/SwipeCard';
 
 {/* SafeAreaProvider is a React context provider from the react-native-safe-area-context library.

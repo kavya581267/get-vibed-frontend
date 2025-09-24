@@ -8,7 +8,6 @@ import { MobileVerificationScreen } from "../screens/newUser/MobileVerification"
 import MainTab from "../screens/artist/main-page/EventScreen";
 import BottomTab from "./BottomTabs";
 import { withGradient } from "../components/hoc/withGradient";
-import Profile from "../screens/artist/Profile";
 import { withGradientSafeArea } from "../components/hoc/withGradientSafeArea";
 import ContactDetails from "../screens/artist/apply-to-perform/ContactDetails";
 import BandDetails from "../screens/artist/apply-to-perform/BandDetails";
@@ -16,8 +15,8 @@ import Portfolio from "../screens/artist/apply-to-perform/Portfolio";
 import EquipmentNeeds from "../screens/artist/apply-to-perform/EquipmentNeeds";
 import { Text } from "react-native";
 import { applyToPerformHeader } from "../components/ApplyToPerformHeader";
-import SwipeCard from "../screens/artist/SwipeCard";
-import MapWithVibers from "../screens/map";
+import MapWithVibers from "../screens/artist/map-and-swipe/map";
+import SwipeCard from "../screens/artist/map-and-swipe/SwipeCard";
 
 
 export type RootStackParamList = {

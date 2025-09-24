@@ -13,17 +13,17 @@ import MapView, { Marker } from "react-native-maps";
 import * as Location from "expo-location";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { LinearGradient } from "expo-linear-gradient";
-import MapSwipeToggle from "../components/MapSwipeToggle";
-import { FontSize, Radius, rsHeight, rsWidth, Spacing } from "../theme/responsive";
-import { theme } from "../theme/theme";
-import InterestButton from "../components/InterestButton";
+import MapSwipeToggle from "../../../components/MapSwipeToggle";
+import { FontSize, Radius, rsHeight, rsWidth, Spacing } from "../../../theme/responsive";
+import { theme } from "../../../theme/theme";
+import InterestButton from "../../../components/InterestButton";
 import { Modalize } from "react-native-modalize";
-import CustomTabView from "../components/CustomTabView";
-import VibersTab from "./artist/map/VibersTab";
-import EventsRoute from "./artist/profile-routes/EventsRoute";
-import PartiesScreen from "./artist/top-tab-view-routes/Parties";
+import CustomTabView from "../../../components/CustomTabView";
+import VibersTab from "./VibersTab";
+import EventsRoute from "../profile-routes/EventsRoute";
+import PartiesScreen from "../top-tab-view-routes/Parties";
 import { SceneMap } from "react-native-tab-view";
-import Profile from "./artist/top-tab-view-routes/Profile";
+import Profile from "../top-tab-view-routes/Profile";
 
 const SCREEN_WIDTH = Dimensions.get("window").width;
 const { height } = Dimensions.get("window");
@@ -35,9 +35,9 @@ const MOCK_VIBERS = [
 ];
 
 const SWIPE_CARDS = [
-    { id: 1, name: "Alice", age: 22, image: require("../../assets/swipe1.jpg"), bio: "Loves music and pets" },
-    { id: 2, name: "Bob", age: 25, image: require("../../assets/swipe2.jpg"), bio: "Night owl and foodie" },
-    { id: 3, name: "Charlie", age: 28, image: require("../../assets/swipe3.jpg"), bio: "Traveler and adventurer" },
+    { id: 1, name: "Alice", age: 22, image: require("../../../../assets/swipe1.jpg"), bio: "Loves music and pets" },
+    { id: 2, name: "Bob", age: 25, image: require("../../../../assets/swipe2.jpg"), bio: "Night owl and foodie" },
+    { id: 3, name: "Charlie", age: 28, image: require("../../../../assets/swipe3.jpg"), bio: "Traveler and adventurer" },
 ];
 
 const interests = ["Music Lover", "Pet Parent", "Night Owl"];

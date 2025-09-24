@@ -6,8 +6,8 @@ import { StyleSheet } from 'react-native';
 import CustomBottomBar from '../components/CustomBottomBar';
 import { withGradient } from '../components/hoc/withGradient';
 import { withGradientSafeArea } from '../components/hoc/withGradientSafeArea';
-import MapWithVibers from '../screens/map';
-import MapSwipeScreen from '../screens/MapSwipeScreen';
+import MapWithVibers from '../screens/artist/map-and-swipe/map';
+import MapSwipeScreen from '../screens/artist/map-and-swipe/MapSwipeScreen';
 import Profile from '../screens/artist/top-tab-view-routes/Profile';
 
 const Tab = createBottomTabNavigator();
