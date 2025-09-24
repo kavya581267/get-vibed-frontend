@@ -123,6 +123,7 @@ const styles = StyleSheet.create({
         flex: 1,
         // justifyContent: "center",
         // alignItems: "center",
+        top: rsHeight(50),
     },
     card: {
         position: "absolute",

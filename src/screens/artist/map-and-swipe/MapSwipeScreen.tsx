@@ -8,6 +8,7 @@ import { GestureHandlerRootView } from "react-native-gesture-handler";
 import MapSwipeToggle from "../../../components/MapSwipeToggle";
 import MapScreen from "./mapScreen";
 import SwipeCard from "./SwipeCard";
+import { rsFont, rsHeight } from "../../../theme/responsive";
 
 
 export default function MapSwipeScreen() {
@@ -54,5 +55,5 @@ export default function MapSwipeScreen() {
 
 const styles = StyleSheet.create({
     container: { flex: 1 },
-    toggle: { position: "absolute", top: 50, alignSelf: "center", zIndex: 10 },
+    toggle: { position: "absolute", top:rsHeight(10), alignSelf: "center", zIndex: 10 },
 });
