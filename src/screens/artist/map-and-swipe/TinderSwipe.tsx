@@ -32,6 +32,7 @@ const interests = ["Music Lover", "Pet Parent", "Night Owl"]
 const TinderSwipe: React.FC<TinderSwipeProps> = ({ data }) => {
     const [index, setIndex] = useState(0);
     const position = useRef(new Animated.ValueXY()).current;
+    const SWIPE_THRESHOLD = SCREEN_WIDTH * 0.3;
 
     // Rotate card when swiping left/right
     {/*. position.x tracks horizontal drag movement of the card.
@@ -50,7 +51,7 @@ const TinderSwipe: React.FC<TinderSwipeProps> = ({ data }) => {
             position.setValue({ x: gesture.dx, y: gesture.dy });
         },
         onPanResponderRelease: (_, gesture) => {
-            if (gesture.dx > 120) {
+            if (gesture.dx > SWIPE_THRESHOLD) {
                 // Swipe right
                 Animated.timing(position, {
                     toValue: { x: SCREEN_WIDTH + 100, y: gesture.dy },
@@ -60,7 +61,7 @@ const TinderSwipe: React.FC<TinderSwipeProps> = ({ data }) => {
                     setIndex((prev) => (prev + 1) % data.length); // loop back
                     position.setValue({ x: 0, y: 0 });
                 });
-            } else if (gesture.dx < -120) {
+            } else if (gesture.dx < -SWIPE_THRESHOLD) {
                 // Swipe left
                 Animated.timing(position, {
                     toValue: { x: -SCREEN_WIDTH - 100, y: gesture.dy },
