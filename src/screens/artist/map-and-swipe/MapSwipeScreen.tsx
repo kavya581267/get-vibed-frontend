@@ -14,29 +14,11 @@ import { rsFont, rsHeight } from "../../../theme/responsive";
 export default function MapSwipeScreen() {
 
 
-    const [location, setLocation] = useState<{ lat: number; lng: number } | null>(null);
     const [activeTab, setActiveTab] = useState<"Map" | "Swipe">("Map");
-
-    // --- Location setup ---
-    useEffect(() => {
-        (async () => {
-            const { status } = await Location.requestForegroundPermissionsAsync();
-            if (status !== "granted") return;
-
-            const subscription = await Location.watchPositionAsync(
-                { accuracy: Location.Accuracy.High, timeInterval: 2000, distanceInterval: 1 },
-                (loc) => setLocation({ lat: loc.coords.latitude, lng: loc.coords.longitude })
-            );
-
-            return () => subscription.remove();
-        })();
-    }, []);
-
-
 
     return (
         <GestureHandlerRootView style={styles.container}>
-            {activeTab === "Map" && location && (
+            {activeTab === "Map" && (
                 <MapScreen />
             )}
 

@@ -48,7 +48,7 @@ const MOCK_VIBERS = [
 const TABS = ["Vibers", "Parties", "Pubs", "Other"];
 
 export default function MapScreen() {
-    const [location, setLocation] = useState(null);
+    const [location, setLocation] = useState<{ lat: number; lng: number } | null>(null);
     const bottomSheetRef = useRef(null);
     const modalRef = useRef<Modalize>(null);
     const [activeTab, setActiveTab] = useState("Vibers");
