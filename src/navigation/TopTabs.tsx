@@ -1,10 +1,10 @@
 import React from "react";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import CustomTabBar from "../components/CustomTabBar";
-import EventScreen from "../screens/artist/EventScreen";
-import PartiesScreen from "../screens/artist/Parties";
-import PubScreen from "../screens/artist/Pubs";
-import OtherScreen from "../screens/artist/Others";
+import EventScreen from "../screens/artist/main-page/EventScreen";
+import PartiesScreen from "../screens/artist/top-tab-view-routes/Parties";
+import PubScreen from "../screens/artist/top-tab-view-routes/Pubs";
+import OtherScreen from "../screens/artist/top-tab-view-routes/Others";
 
 
 const Tab = createMaterialTopTabNavigator();

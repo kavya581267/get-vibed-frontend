@@ -2,27 +2,28 @@ import React, { useState } from "react";
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import { FontSize, Radius, rsHeight, rsWidth, Spacing } from "../theme/responsive";
 import { theme } from "../theme/theme";
+import { useNavigation } from "@react-navigation/native";
 
-const MapSwipeToggle = () => {
-    const [active, setActive] = useState<"Map" | "Swipe">("Map");
+interface MapSwipeToggleProps {
+    active: "Map" | "Swipe";
+    setActive: (tab: "Map" | "Swipe") => void;
+}
 
-    const handlePress = (screen: "Map" | "Swipe") => {
-        setActive(screen);
-        // navigation.navigate(screen); 
-    };
+const MapSwipeToggle: React.FC<MapSwipeToggleProps> = ({ active, setActive }) => {
+   
 
     return (
         <View style={styles.container}>
             <TouchableOpacity
                 style={[styles.button, active === "Map" && styles.activeButton]}
-                onPress={() => handlePress("Map")}
+                onPress={() => {setActive("Map")}}
             >
                 <Text style={[styles.text, active === "Map" && styles.activeText]}>Map</Text>
             </TouchableOpacity>
 
             <TouchableOpacity
                 style={[styles.button, active === "Swipe" && styles.activeButton]}
-                onPress={() => handlePress("Swipe")}
+                onPress={() => {setActive("Swipe")}}
             >
                 <Text style={[styles.text, active === "Swipe" && styles.activeText]}>Swipe</Text>
             </TouchableOpacity>

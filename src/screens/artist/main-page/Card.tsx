@@ -1,7 +1,7 @@
 
 import React, { useEffect, useState } from "react";
 import { View, FlatList, ActivityIndicator } from "react-native";
-import EventCard from "./AppInfoCard";
+import EventCard from "./EventCard";
 
 interface Item {
     id: string;

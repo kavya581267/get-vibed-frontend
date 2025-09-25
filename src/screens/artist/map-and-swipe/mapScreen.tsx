@@ -5,15 +5,14 @@ import * as Location from "expo-location";
 import { Modalize } from "react-native-modalize";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { SceneMap } from "react-native-tab-view";
-import EventsRoute from "./artist/profile-routes/EventsRoute";
-import CustomTabView from "../components/CustomTabView";
-import { theme } from "../theme/theme";
-import { FontSize, Radius, rsHeight, rsWidth, Spacing } from "../theme/responsive";
+import EventsRoute from "../profile-routes/EventsRoute";
+import CustomTabView from "../../../components/CustomTabView";
+import { theme } from "../../../theme/theme";
+import { FontSize, Radius, rsHeight, rsWidth, Spacing } from "../../../theme/responsive";
 import { SegmentedButtons } from "react-native-paper";
-import MapSwipeToggle from "../components/MapSwipeToggle";
-import VibersTab from "./artist/map/VibersTab";
-import Profile from "./artist/Profile";
-import PartiesScreen from "./artist/Parties";
+import VibersTab from "./VibersTab";
+import PartiesScreen from "../top-tab-view-routes/Parties";
+import Profile from "../top-tab-view-routes/Profile";
 
 const { height } = Dimensions.get("window");
 
@@ -48,7 +47,7 @@ const MOCK_VIBERS = [
 
 const TABS = ["Vibers", "Parties", "Pubs", "Other"];
 
-export default function MapWithVibers() {
+export default function MapScreen() {
     const [location, setLocation] = useState(null);
     const bottomSheetRef = useRef(null);
     const modalRef = useRef<Modalize>(null);
@@ -129,10 +128,6 @@ export default function MapWithVibers() {
                     </Marker>
                 ))}
             </MapView>
-
-            <View style={{ position: "absolute", top: 50, alignSelf: "center" }}>
-                <MapSwipeToggle />
-            </View>
 
             <Modalize
                 ref={modalRef}

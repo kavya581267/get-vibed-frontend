@@ -1,10 +1,10 @@
 import React from "react";
 import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
 import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
-import { FontSize, rsBorder, rsHeight, rsWidth, Spacing } from "../../theme/responsive";
-import CustomButton from "../../components/CustomButton";
-import { theme } from "../../theme/theme";
-import SideBarMenu from "../../components/SideBarMenu";
+import { FontSize, rsBorder, rsHeight, rsWidth, Spacing } from "../../../theme/responsive";
+import CustomButton from "../../../components/CustomButton";
+import { theme } from "../../../theme/theme";
+import SideBarMenu from "../../../components/SideBarMenu";
 import { useNavigation } from "@react-navigation/native";
 
 type EventCardProps = {
@@ -42,7 +42,7 @@ export const EventCard: React.FC<EventCardProps> = ({
             <View style={{ paddingBottom: 10, flexDirection: "row", justifyContent: "space-between", alignItems: "center" }}>
                 <View style={{ flexDirection: 'row', paddingLeft: Spacing.md, paddingRight: Spacing.md }}>
                     <View>
-                        <Image style={{ width: rsWidth(36), height: rsHeight(36) }} source={require('../../../assets/Ellipse.png')} resizeMode="contain" />
+                        <Image style={{ width: rsWidth(36), height: rsHeight(36) }} source={require('../../../../assets/Ellipse.png')} resizeMode="contain" />
                     </View>
                     <View style={{ paddingLeft: 10 }}>
                         <Text style={{ color: "white", fontSize: FontSize.small, fontWeight: "600" }}>10 Downing Street, Begumpet</Text>
@@ -57,7 +57,7 @@ export const EventCard: React.FC<EventCardProps> = ({
 
             <View>
                 {/* Cover Image */}
-                <Image style={{ width: rsWidth(402), height: rsWidth(239) }} source={require('../../../assets/image1.png')} resizeMode="cover" />
+                <Image style={{ width: rsWidth(402), height: rsWidth(239) }} source={require('../../../../assets/image1.png')} resizeMode="cover" />
                 <View style={styles.ratingBadge}>
                     <Ionicons name="star" size={rsHeight(15)} color="#fff" />
                     <Text style={styles.ratingText}>{rating}</Text>

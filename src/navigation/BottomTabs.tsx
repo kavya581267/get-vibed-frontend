@@ -1,31 +1,27 @@
-import { createBottomTabNavigator, TransitionPresets, TransitionSpecs } from '@react-navigation/bottom-tabs';
-import Card from '../screens/artist/Card';
-import MainTab from '../screens/artist/EventScreen';
-import { BlurView } from 'expo-blur';
-import { StyleSheet } from 'react-native';
+
+import Card from '../screens/artist/main-page/Card';
+import MainTab from '../screens/artist/main-page/EventScreen';
 import CustomBottomBar from '../components/CustomBottomBar';
-import Profile from '../screens/artist/Profile';
 import { withGradient } from '../components/hoc/withGradient';
 import { withGradientSafeArea } from '../components/hoc/withGradientSafeArea';
-import MapWithVibers from '../screens/map';
+import MapSwipeScreen from '../screens/artist/map-and-swipe/MapSwipeScreen';
+import Profile from '../screens/artist/top-tab-view-routes/Profile';
+import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 
-const Tab = createBottomTabNavigator();
+const Tab = createMaterialTopTabNavigator();
 
 export default function BottomTab() {
     return (
-        <Tab.Navigator screenOptions={{
-            headerShown: false, tabBarStyle: { position: 'absolute', backgroundColor: "transparent" },
-            tabBarBackground: () => (
-                <BlurView tint="light" intensity={100} style={StyleSheet.absoluteFill} />
-            ),
-            animation: "shift", 
-        }}
-         detachInactiveScreens={false}
+        <Tab.Navigator
+            tabBarPosition='bottom'
+            screenOptions={{
+                tabBarStyle: { position: 'absolute', backgroundColor: "transparent" },
+            }}
             tabBar={(props) => <CustomBottomBar {...props} />}
         >
-            <Tab.Screen name="EventBottom" component={withGradientSafeArea(MainTab)}  />
+            <Tab.Screen name="EventBottom" component={withGradientSafeArea(MainTab)} />
             <Tab.Screen name="Bookings" component={withGradientSafeArea(Card)} />
-            <Tab.Screen name="Pubs" component={withGradientSafeArea(MapWithVibers)} />
+            <Tab.Screen name="Pubs" component={withGradientSafeArea(MapSwipeScreen)} />
             <Tab.Screen name="Profile" component={withGradient(Profile)} />
         </Tab.Navigator>
 

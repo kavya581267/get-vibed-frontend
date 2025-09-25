@@ -1,15 +1,15 @@
 import { Image, ImageBackground, Platform, StyleSheet, Text, TouchableOpacity, useWindowDimensions, View } from "react-native";
-import { FontSize, rsFontModerate, rsHeight, rsModerate, rsWidth, Spacing } from "../../theme/responsive";
+import { FontSize, rsFontModerate, rsHeight, rsModerate, rsWidth, Spacing } from "../../../theme/responsive";
 import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
-import { theme } from "../../theme/theme";
-import CustomButton from "../../components/CustomButton";
+import { theme } from "../../../theme/theme";
+import CustomButton from "../../../components/CustomButton";
 import React, { useState } from "react";
 import { TabView, SceneMap, TabBar } from "react-native-tab-view";
-import EventsRoute from "./profile-routes/EventsRoute";
-import TracksRoute from "./profile-routes/TracksRoute";
-import PostsRoute from "./profile-routes/PostsRoute";
-import MoreRoute from "./profile-routes/MoreRoute";
-import CustomTabView from "../../components/CustomTabView";
+import CustomTabView from "../../../components/CustomTabView";
+import EventsRoute from "../profile-routes/EventsRoute";
+import TracksRoute from "../profile-routes/TracksRoute";
+import PostsRoute from "../profile-routes/PostsRoute";
+import MoreRoute from "../profile-routes/MoreRoute";
 
 
 export default function Profile() {
@@ -34,7 +34,7 @@ export default function Profile() {
         <View style={styles.container}>
             <View >
                 <ImageBackground
-                    source={require("../../../assets/profile-pic.jpg")}
+                    source={require("../../../../assets/profile-pic.jpg")}
                     style={styles.image}
                     resizeMode="cover"
                 >

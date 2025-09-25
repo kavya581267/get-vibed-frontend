@@ -5,10 +5,9 @@ import { InterestsScreen } from "../screens/newUser/Interests";
 import { SuccessScreen } from "../screens/newUser/Success";
 import SignUpScreen from "../screens/newUser/SignUp";
 import { MobileVerificationScreen } from "../screens/newUser/MobileVerification";
-import MainTab from "../screens/artist/EventScreen";
+import MainTab from "../screens/artist/main-page/EventScreen";
 import BottomTab from "./BottomTabs";
 import { withGradient } from "../components/hoc/withGradient";
-import Profile from "../screens/artist/Profile";
 import { withGradientSafeArea } from "../components/hoc/withGradientSafeArea";
 import ContactDetails from "../screens/artist/apply-to-perform/ContactDetails";
 import BandDetails from "../screens/artist/apply-to-perform/BandDetails";
@@ -16,6 +15,8 @@ import Portfolio from "../screens/artist/apply-to-perform/Portfolio";
 import EquipmentNeeds from "../screens/artist/apply-to-perform/EquipmentNeeds";
 import { Text } from "react-native";
 import { applyToPerformHeader } from "../components/ApplyToPerformHeader";
+import MapWithVibers from "../screens/artist/map-and-swipe/mapScreen";
+import SwipeCard from "../screens/artist/map-and-swipe/SwipeCard";
 
 
 export type RootStackParamList = {
@@ -61,7 +62,8 @@ export default function StackNavigator<RootStackParamList>() {
                options={applyToPerformHeader("Apply to Perform", index + 1, steps.length)}
             />
          ))}
-        
+         <Stack.Screen name="SwipeCard" component={withGradient(SwipeCard)} />
+         <Stack.Screen name="MapWithVibers" component={withGradientSafeArea(MapWithVibers)} />
 
 
       </Stack.Navigator>
