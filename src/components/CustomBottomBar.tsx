@@ -1,13 +1,14 @@
-import { BottomTabBarProps } from "@react-navigation/bottom-tabs";
+
 import { Image, Platform, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { FontSize, Radius, rsHeight, rsModerate, rsWidth, Spacing } from "../theme/responsive";
 import { theme } from "../theme/theme";
 // Removed invalid Colors importmain
 import { BlurView } from "expo-blur";
+import { MaterialTopTabBarProps } from "@react-navigation/material-top-tabs";
 
 
 
-export default function CustomBottomBar({ state, descriptors, navigation, insets }: BottomTabBarProps) {
+export default function CustomBottomBar({ state, descriptors, navigation }: MaterialTopTabBarProps) {
     const bottomTabs = [
         { label: "Events", activeIcon: require("../../assets/event-fill.png"), inactiveIcon: require("../../assets/event.png") },
         { label: "Bookings", activeIcon: require("../../assets/booking-fill.png"), inactiveIcon: require("../../assets/booking.png") },

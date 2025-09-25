@@ -170,7 +170,7 @@ const styles = StyleSheet.create({
         // paddingBottom: Spacing.md,
     },
     swipeContainer: { flex: 1, justifyContent: "center", alignItems: "center" },
-    bioContainer: { paddingHorizontal: 20, paddingBottom: 10 },
+    bioContainer: { paddingHorizontal: 20 },
     bioTitle: { fontSize: FontSize.body, fontWeight: "600", color: theme.colors.secondary, marginBottom: 6 },
     bioText: { fontSize: FontSize.body, color: "#8C8C8C" },
     cardStack: {
@@ -181,7 +181,7 @@ const styles = StyleSheet.create({
     grid: {
         flexDirection: "row",
         paddingHorizontal: 20,
-        paddingBottom: Spacing.lg
+        paddingBottom: Spacing.big
     }
 
 });
