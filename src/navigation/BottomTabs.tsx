@@ -14,8 +14,10 @@ export default function BottomTab() {
     return (
         <Tab.Navigator
             tabBarPosition='bottom'
+            
             screenOptions={{
                 tabBarStyle: { position: 'absolute', backgroundColor: "transparent" },
+                swipeEnabled: false
             }}
             tabBar={(props) => <CustomBottomBar {...props} />}
         >
