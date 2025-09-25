@@ -255,9 +255,10 @@ const styles = StyleSheet.create({
         left: 30,
         borderWidth: Radius.xs - 1,
         borderColor: "green",
-        paddingHorizontal: Spacing.sm,
-        paddingVertical: Spacing.tiny - 3,
-        borderRadius: Radius.sm,
+        paddingHorizontal: Spacing.lg,
+        paddingVertical: Spacing.tiny ,
+        borderRadius: Radius.pill,
+        backgroundColor: "rgba(0, 255, 150, 0.3)",
     },
     likeText: { color: "green", fontSize: FontSize.h1, fontWeight: "bold" },
     nopeBox: {
@@ -266,9 +267,10 @@ const styles = StyleSheet.create({
         right: 30,
         borderWidth: Radius.xs - 1,
         borderColor: "red",
-        paddingHorizontal: Spacing.sm,
-        paddingVertical: Spacing.tiny - 3,
-        borderRadius: Radius.sm,
+        paddingHorizontal: Spacing.lg,
+        paddingVertical: Spacing.tiny ,
+        borderRadius: Radius.pill,
+        backgroundColor: "rgba(255, 59, 48, 0.7)"
     },
     nopeText: { color: "red", fontSize: FontSize.h1, fontWeight: "bold" },
 
