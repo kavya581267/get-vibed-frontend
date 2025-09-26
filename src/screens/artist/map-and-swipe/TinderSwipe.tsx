@@ -8,7 +8,7 @@ import {
     Dimensions,
     ImageBackground,
 } from "react-native";
-import { FontSize, rsFontModerate, rsHeight, rsModerate, rsWidth, Spacing } from "../../../theme/responsive";
+import { FontSize, Radius, rsFontModerate, rsHeight, rsModerate, rsWidth, Spacing } from "../../../theme/responsive";
 import { theme } from "../../../theme/theme";
 import { LinearGradient } from "expo-linear-gradient";
 import InterestButton from "../../../components/InterestButton";
@@ -32,8 +32,12 @@ const interests = ["Music Lover", "Pet Parent", "Night Owl"]
 const TinderSwipe: React.FC<TinderSwipeProps> = ({ data }) => {
     const [index, setIndex] = useState(0);
     const position = useRef(new Animated.ValueXY()).current;
+    const SWIPE_THRESHOLD = SCREEN_WIDTH * 0.3;
 
     // Rotate card when swiping left/right
+    {/*. position.x tracks horizontal drag movement of the card.
+         If you drag the card right, position.x becomes positive.
+         If you drag the card left, position.x becomes negative. */}
     const rotate = position.x.interpolate({
         inputRange: [-SCREEN_WIDTH / 2, 0, SCREEN_WIDTH / 2],
         outputRange: ["-10deg", "0deg", "10deg"],
@@ -42,12 +46,12 @@ const TinderSwipe: React.FC<TinderSwipeProps> = ({ data }) => {
 
     // Handle swipe gestures
     const swipePanResponder = PanResponder.create({
-        onStartShouldSetPanResponder: () => true,
+        onStartShouldSetPanResponder: () => true, //I want this card to respond to touch and drag gestures.
         onPanResponderMove: (_, gesture) => {
             position.setValue({ x: gesture.dx, y: gesture.dy });
         },
         onPanResponderRelease: (_, gesture) => {
-            if (gesture.dx > 120) {
+            if (gesture.dx > SWIPE_THRESHOLD) {
                 // Swipe right
                 Animated.timing(position, {
                     toValue: { x: SCREEN_WIDTH + 100, y: gesture.dy },
@@ -57,7 +61,7 @@ const TinderSwipe: React.FC<TinderSwipeProps> = ({ data }) => {
                     setIndex((prev) => (prev + 1) % data.length); // loop back
                     position.setValue({ x: 0, y: 0 });
                 });
-            } else if (gesture.dx < -120) {
+            } else if (gesture.dx < -SWIPE_THRESHOLD) {
                 // Swipe left
                 Animated.timing(position, {
                     toValue: { x: -SCREEN_WIDTH - 100, y: gesture.dy },
@@ -83,14 +87,76 @@ const TinderSwipe: React.FC<TinderSwipeProps> = ({ data }) => {
         data.slice(index, index + 3)
             .map((item, i) => {
                 if (!item) return null;
+
                 let cardStyle: any = {};
                 if (i === 0) cardStyle = { top: 50, transform: [{ translateX: position.x }, { translateY: position.y }, { rotate }] };
                 if (i === 1) cardStyle = { top: 30, transform: [{ scale: 0.97 }] };
                 if (i === 2) cardStyle = { top: 10, transform: [{ scale: 0.94 }] };
+
+                if (i === 0) {
+                    return (
+                        <Animated.View
+                            key={item.id}
+                            {...swipePanResponder.panHandlers}
+                            style={[styles.card, cardStyle]}
+                        >
+                            <ImageBackground source={item.image} style={styles.image}>
+                                {/* LIKE label */}
+                                <Animated.View
+                                    style={[
+                                        styles.likeBox,
+                                        {
+                                            opacity: position.x.interpolate({
+                                                inputRange: [0, SCREEN_WIDTH / 1.2],
+                                                outputRange: [0, 1],
+                                                extrapolate: "clamp",
+                                            }),
+                                            transform: [{ rotate: "-20deg" }],
+                                        },
+                                    ]}
+                                >
+                                    <Text style={styles.likeText}>LIKE</Text>
+                                </Animated.View>
+
+                                {/* NOPE label */}
+                                <Animated.View
+                                    style={[
+                                        styles.nopeBox,
+                                        {
+                                            opacity: position.x.interpolate({
+                                                inputRange: [-SCREEN_WIDTH / 1.2, 0],
+                                                outputRange: [1, 0],
+                                                extrapolate: "clamp",
+                                            }),
+                                            transform: [{ rotate: "20deg" }],
+                                        },
+                                    ]}
+                                >
+                                    <Text style={styles.nopeText}>NOPE</Text>
+                                </Animated.View>
+
+                                <LinearGradient
+                                    colors={["transparent", "rgba(0,0,0,0.7)"]}
+                                    style={styles.gradient}
+                                >
+                                    <View style={{ flexDirection: "row", marginLeft: Spacing.md }}>
+                                        <Text style={styles.text}>{item.name}</Text>
+                                        <Text style={styles.textAge}>{item.age}</Text>
+                                    </View>
+                                    <Text style={styles.textCity}>Vizag</Text>
+                                </LinearGradient>
+                            </ImageBackground>
+                        </Animated.View>
+                    );
+                }
+
                 return (
-                    <Animated.View key={item.id} {...(i === 0 ? swipePanResponder.panHandlers : {})} style={[styles.card, cardStyle]}>
+                    <Animated.View key={item.id} style={[styles.card, cardStyle]}>
                         <ImageBackground source={item.image} style={styles.image}>
-                            <LinearGradient colors={["transparent", "rgba(0,0,0,0.7)"]} style={styles.gradient}>
+                            <LinearGradient
+                                colors={["transparent", "rgba(0,0,0,0.7)"]}
+                                style={styles.gradient}
+                            >
                                 <View style={{ flexDirection: "row", marginLeft: Spacing.md }}>
                                     <Text style={styles.text}>{item.name}</Text>
                                     <Text style={styles.textAge}>{item.age}</Text>
@@ -182,6 +248,30 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         paddingHorizontal: 20,
         paddingBottom: Spacing.big
-    }
+    },
+    likeBox: {
+        position: "absolute",
+        top: 40,
+        left: 30,
+        borderWidth: Radius.xs - 1,
+        borderColor: "green",
+        paddingHorizontal: Spacing.lg,
+        paddingVertical: Spacing.tiny ,
+        borderRadius: Radius.pill,
+        backgroundColor: "rgba(0, 255, 150, 0.3)",
+    },
+    likeText: { color: "green", fontSize: FontSize.h1, fontWeight: "bold" },
+    nopeBox: {
+        position: "absolute",
+        top: 40,
+        right: 30,
+        borderWidth: Radius.xs - 1,
+        borderColor: "red",
+        paddingHorizontal: Spacing.lg,
+        paddingVertical: Spacing.tiny ,
+        borderRadius: Radius.pill,
+        backgroundColor: "rgba(255, 59, 48, 0.7)"
+    },
+    nopeText: { color: "red", fontSize: FontSize.h1, fontWeight: "bold" },
 
 });
